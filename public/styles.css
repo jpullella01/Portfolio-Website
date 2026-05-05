@@ -16,6 +16,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 7rem;
 }
 
 body {
@@ -42,6 +43,30 @@ body::before {
     linear-gradient(90deg, rgba(32, 36, 55, 0.045) 1px, transparent 1px);
   background-size: 96px 96px;
   mask-image: radial-gradient(circle at 50% 45%, black, transparent 72%);
+}
+
+.skip-link {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 20;
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(23, 27, 42, 0.16);
+  border-radius: 999px;
+  color: var(--ink);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow: 0 1rem 3rem rgba(62, 68, 91, 0.16);
+  transform: translateY(-5rem);
+  transition: transform 180ms ease;
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
 }
 
 body::after {
@@ -80,6 +105,14 @@ body::after {
   text-decoration: none;
 }
 
+.brand-mark:focus-visible,
+.contact-link:focus-visible,
+.top-nav a:focus-visible,
+.card-actions a:focus-visible {
+  outline: 2px solid rgba(91, 98, 123, 0.58);
+  outline-offset: 4px;
+}
+
 .brand-mark {
   display: grid;
   width: 2.35rem;
@@ -108,7 +141,9 @@ body::after {
 }
 
 .top-nav a:hover,
-.contact-link:hover {
+.contact-link:hover,
+.top-nav a:focus-visible,
+.contact-link:focus-visible {
   opacity: 1;
   transform: translateY(-1px);
 }
@@ -275,7 +310,8 @@ h1 {
   transition: background 180ms ease, transform 180ms ease, border-color 180ms ease;
 }
 
-.card-actions a:hover {
+.card-actions a:hover,
+.card-actions a:focus-visible {
   border-color: rgba(26, 31, 49, 0.24);
   background: rgba(255, 255, 255, 0.76);
   transform: translateY(-2px);
