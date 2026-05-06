@@ -23,6 +23,7 @@
       <a class="brand-mark" href="#hero" aria-label="Julianne Designs home">JD</a>
       <nav class="top-nav" aria-label="Site sections">
         <a href="#portfolio">Portfolio</a>
+        <a href="#project-detail">Projects</a>
         <a href="#about">About</a>
       </nav>
       <a class="contact-link" href="mailto:hello@juliannedesigns.example" aria-label="Email Julianne Designs">Contact</a>
@@ -51,7 +52,7 @@
           </p>
           <div class="card-actions" aria-label="Featured sections">
             <a href="#portfolio">View portfolio</a>
-            <a href="#about">About the studio</a>
+            <a href="#project-detail">Explore themes</a>
           </div>
         </article>
 
@@ -62,6 +63,35 @@
         </aside>
       </section>
 
+      <section class="project-system" aria-labelledby="portfolio-title">
+        <div class="section-heading">
+          <p class="eyebrow">Theme system / design-board placeholders</p>
+          <h2 id="portfolio-title">Each project can reshape the whole site without rewriting the site.</h2>
+          <p>
+            Project color, tone, image paths, and design principles live in one manifest. Hover or focus a project to preview its theme; open it to keep the theme active while the placeholder detail page is ready for final image uploads.
+          </p>
+        </div>
+        <div class="project-grid" data-project-grid></div>
+      </section>
+
+      <section id="project-detail" class="project-detail" data-project-detail aria-live="polite">
+        <div>
+          <p class="eyebrow" data-detail-kicker>Project system</p>
+          <h2 data-detail-title>Choose a project theme</h2>
+          <p data-detail-summary>
+            Select any project placeholder above to preview a fully themed project page and confirm where high-resolution design-board imagery will appear later.
+          </p>
+          <div class="principle-list" data-detail-principles></div>
+        </div>
+        <div class="asset-plan">
+          <span data-detail-status>Ready for full-resolution uploads</span>
+          <strong data-detail-path>/assets/projects/{project-slug}/</strong>
+          <p>
+            Upload the finished boards to the project folder, then point the manifest at those files. The layout will reveal imagery automatically when paths are present.
+          </p>
+        </div>
+      </section>
+
       <section id="about" class="about-strip" aria-label="About Julianne Designs">
         <span>Soft precision</span>
         <span>Glass interfaces</span>
@@ -69,6 +99,7 @@
       </section>
     </main>
 
+    <script src="/data/projects.js" defer></script>
     <script src="/script.js" defer></script>
   </body>
 </html>
