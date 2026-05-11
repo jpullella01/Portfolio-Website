@@ -17,6 +17,7 @@
   --grid-line: rgba(30, 30, 30, 0.055);
   --cursor-x: 50vw;
   --cursor-y: 50vh;
+  --font-rounded: "Gotham Rounded", "Gotham Rounded SSm", "Gotham Rounded A", "Gotham Rounded B", "Gotham Rounded Bold", "Arial Rounded MT Bold", "Avenir Next Rounded", ui-rounded, "Helvetica Neue", Arial, sans-serif;
 }
 
 * {
@@ -33,7 +34,7 @@ body {
   margin: 0;
   overflow-x: hidden;
   color: var(--ink);
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: var(--font-rounded);
   background:
     radial-gradient(circle at var(--cursor-x) var(--cursor-y), rgba(255, 255, 255, 0.55), transparent 18rem),
     radial-gradient(circle at 16% 12%, rgba(255, 255, 255, 0.9), transparent 27rem),
@@ -297,8 +298,8 @@ h1,
 .section-heading h2,
 .section-card h2,
 .project-gallery h2 {
-  font-family: Georgia, "Times New Roman", serif;
-  font-weight: 500;
+  font-family: var(--font-rounded);
+  font-weight: 700;
   letter-spacing: -0.06em;
 }
 
@@ -447,9 +448,9 @@ h1 {
 
 .project-card h3 {
   margin: 0;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--font-rounded);
   font-size: clamp(2rem, 4vw, 3.2rem);
-  font-weight: 500;
+  font-weight: 700;
   line-height: 0.9;
   letter-spacing: -0.055em;
 }
@@ -528,8 +529,9 @@ h1 {
   left: 2rem;
   content: var(--placeholder-label, "Project");
   color: color-mix(in srgb, var(--accent) 38%, transparent);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--font-rounded);
   font-size: clamp(4rem, 10vw, 9rem);
+  font-weight: 800;
   line-height: 0.85;
   letter-spacing: -0.08em;
 }
@@ -920,9 +922,9 @@ body::after {
   height: 48px;
   border: 1px solid rgba(255, 255, 255, 0.66);
   color: rgba(255, 255, 255, 0.78);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--font-rounded);
   font-size: 0.74rem;
-  font-weight: 400;
+  font-weight: 700;
   letter-spacing: 0.1em;
   background: rgba(255, 255, 255, 0.06);
   box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.55);
@@ -1160,9 +1162,9 @@ body::after {
   display: grid;
   margin: 0;
   color: var(--mockup-ink);
-  font-family: Didot, "Bodoni 72", "Bodoni 72 Display", "Iowan Old Style", Georgia, serif;
-  font-size: clamp(5.4rem, 11.2vw, 10.55rem);
-  font-weight: 400;
+  font-family: var(--font-rounded);
+  font-size: clamp(5.2rem, 10.8vw, 10.1rem);
+  font-weight: 800;
   line-height: 0.78;
   letter-spacing: -0.075em;
 }
