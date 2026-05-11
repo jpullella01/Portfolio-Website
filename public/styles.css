@@ -3,9 +3,9 @@
   --blush-beige: #F2DED6;
   --coral-glow: #E36A5C;
   --soft-tan: #E7C9AE;
-  --charcoal: #1E1E1E;
+  --charcoal: #3f3939;
   --ink: var(--charcoal);
-  --muted: #756b64;
+  --muted: #6f6761;
   --hairline: rgba(30, 30, 30, 0.12);
   --glass: rgba(255, 250, 244, 0.5);
   --glass-strong: rgba(255, 252, 248, 0.72);
@@ -17,6 +17,7 @@
   --grid-line: rgba(30, 30, 30, 0.055);
   --cursor-x: 50vw;
   --cursor-y: 50vh;
+  --font-professional: Helvetica, "Helvetica Neue", Arial, "Avenir Next", Avenir, sans-serif;
 }
 
 * {
@@ -33,7 +34,7 @@ body {
   margin: 0;
   overflow-x: hidden;
   color: var(--ink);
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: var(--font-professional);
   background:
     radial-gradient(circle at var(--cursor-x) var(--cursor-y), rgba(255, 255, 255, 0.55), transparent 18rem),
     radial-gradient(circle at 16% 12%, rgba(255, 255, 255, 0.9), transparent 27rem),
@@ -297,8 +298,8 @@ h1,
 .section-heading h2,
 .section-card h2,
 .project-gallery h2 {
-  font-family: Georgia, "Times New Roman", serif;
-  font-weight: 500;
+  font-family: var(--font-professional);
+  font-weight: 700;
   letter-spacing: -0.06em;
 }
 
@@ -447,9 +448,9 @@ h1 {
 
 .project-card h3 {
   margin: 0;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--font-professional);
   font-size: clamp(2rem, 4vw, 3.2rem);
-  font-weight: 500;
+  font-weight: 700;
   line-height: 0.9;
   letter-spacing: -0.055em;
 }
@@ -528,8 +529,9 @@ h1 {
   left: 2rem;
   content: var(--placeholder-label, "Project");
   color: color-mix(in srgb, var(--accent) 38%, transparent);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--font-professional);
   font-size: clamp(4rem, 10vw, 9rem);
+  font-weight: 800;
   line-height: 0.85;
   letter-spacing: -0.08em;
 }
@@ -860,7 +862,7 @@ h1 {
 :root {
   --mockup-canvas: #e8e3e6;
   --mockup-canvas-deep: #ddd6da;
-  --mockup-ink: #2d2a2b;
+  --mockup-ink: #4f494b;
   --mockup-muted: #a8a2a5;
   --mockup-stroke: rgba(255, 255, 255, 0.62);
 }
@@ -920,9 +922,9 @@ body::after {
   height: 48px;
   border: 1px solid rgba(255, 255, 255, 0.66);
   color: rgba(255, 255, 255, 0.78);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--font-professional);
   font-size: 0.74rem;
-  font-weight: 400;
+  font-weight: 700;
   letter-spacing: 0.1em;
   background: rgba(255, 255, 255, 0.06);
   box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.55);
@@ -1160,11 +1162,11 @@ body::after {
   display: grid;
   margin: 0;
   color: var(--mockup-ink);
-  font-family: Didot, "Bodoni 72", "Bodoni 72 Display", "Iowan Old Style", Georgia, serif;
-  font-size: clamp(5.4rem, 11.2vw, 10.55rem);
-  font-weight: 400;
-  line-height: 0.78;
-  letter-spacing: -0.075em;
+  font-family: var(--font-professional);
+  font-size: clamp(5.2rem, 10.8vw, 10.1rem);
+  font-weight: 700;
+  line-height: 0.82;
+  letter-spacing: -0.065em;
 }
 
 .hero-content h1 span:last-child {
@@ -1183,7 +1185,7 @@ body::after {
   padding: 15px 24px 14px;
   border: 1px solid rgba(255, 255, 255, 0.58);
   border-radius: 999px;
-  color: rgba(45, 42, 43, 0.76);
+  color: rgba(79, 73, 75, 0.82);
   font-size: 0.9rem;
   letter-spacing: -0.01em;
   text-align: center;
@@ -1262,7 +1264,7 @@ body::after {
 .top-nav a,
 .contact-link {
   color: var(--mockup-ink);
-  opacity: 0.56;
+  opacity: 0.72;
 }
 
 .top-nav a:hover,
