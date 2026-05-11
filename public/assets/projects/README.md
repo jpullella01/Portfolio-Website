@@ -1,19 +1,24 @@
-# Project image upload plan
+# Project asset structure
 
-Each portfolio project has its own folder, keyed by the `slug` in `public/data/projects.js`:
-
-- `brand-systems/`
-- `web-direction/`
-- `launch-visuals/`
-
-When the final high-resolution project images are ready, upload them into the matching folder and update the project's `heroImage` field plus any future gallery fields in `public/data/projects.js`. The front-end reads that manifest and renders the available image automatically, so project pages can stay data-driven instead of hard-coding image tags throughout the site.
-
-Recommended naming pattern:
+Project imagery is grouped by slug so each reusable project page can resolve assets from a predictable folder path.
 
 ```text
-public/assets/projects/{project-slug}/hero.webp
-public/assets/projects/{project-slug}/board-01.webp
-public/assets/projects/{project-slug}/board-02.webp
+public/assets/projects/
+├── tongo/
+├── dega/
+├── sprout/
+├── unlocked/
+├── sportrock/
+└── trade-stacks/
 ```
 
-Prefer optimized `.webp` or `.avif` exports for the live site while keeping source-quality originals outside the deployed `public/` directory if they are very large.
+Each project can use the shared folder types below as needed:
+
+- `hero/` for the main project image.
+- `research/` for user research, market context, observations, and inputs.
+- `process/` for sketching, iteration, testing, and development visuals.
+- `cmf/` for color, material, finish, and design-language references.
+- `final/` for final application shots and presentation images.
+- `gallery/` for additional details and supporting visuals.
+
+Some projects also include optional folders that match their case-study emphasis, such as `materials/`, `testing/`, `development/`, `use-cases/`, `graphics/`, `mockups/`, `rollout/`, `system/`, and `data/`.

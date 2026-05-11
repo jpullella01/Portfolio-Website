@@ -1,20 +1,21 @@
 const root = document.documentElement;
 const reduceMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 const projects = window.PORTFOLIO_PROJECTS ?? [];
+const sitePages = window.SITE_PAGES ?? {};
 const defaultTheme = {
-  ink: "#171b2a",
-  muted: "#73788a",
-  canvas: "#f3f4f8",
-  glass: "rgba(255, 255, 255, 0.46)",
-  glassStrong: "rgba(255, 255, 255, 0.68)",
-  accent: "#5b627b",
-  accentSoft: "rgba(255, 118, 109, 0.12)",
-  glowOne: "#dfe4f1",
-  glowTwo: "#ffffff",
-  grid: "rgba(32, 36, 55, 0.045)",
+  ink: "#1E1E1E",
+  muted: "#756b64",
+  canvas: "#F6F1EC",
+  glass: "rgba(255, 250, 244, 0.5)",
+  glassStrong: "rgba(255, 252, 248, 0.72)",
+  accent: "#E36A5C",
+  accentSoft: "rgba(227, 106, 92, 0.12)",
+  glowOne: "#F2DED6",
+  glowTwo: "#E7C9AE",
+  grid: "rgba(30, 30, 30, 0.055)",
 };
 
-let activeProject = null;
+let activeProject = projects[0] ?? null;
 let animationFrame = null;
 let pointerX = window.innerWidth / 2;
 let pointerY = window.innerHeight / 2;
@@ -31,6 +32,8 @@ const themePropertyMap = {
   glowTwo: "--glow-two",
   grid: "--grid-line",
 };
+
+const projectRoute = (slug) => `/projects/${slug}`;
 
 const applyTheme = (theme = defaultTheme) => {
   Object.entries(themePropertyMap).forEach(([key, property]) => {
@@ -66,10 +69,31 @@ const syncPointerTracking = () => {
   }
 };
 
-const createPrincipleChip = (principle) => {
+const createChip = (text) => {
   const chip = document.createElement("span");
-  chip.textContent = principle;
+  chip.textContent = text;
   return chip;
+};
+
+const showView = (viewName) => {
+  document.querySelectorAll("[data-view]").forEach((view) => {
+    view.hidden = view.dataset.view !== viewName;
+  });
+};
+
+const getProjectFromPath = (path = window.location.pathname) => {
+  const slug = path.match(/^\/projects\/([^/]+)\/?$/)?.[1];
+  return projects.find((project) => project.slug === slug) ?? null;
+};
+
+const syncActiveNav = () => {
+  const path = window.location.pathname;
+
+  document.querySelectorAll("[data-route]").forEach((link) => {
+    const href = link.getAttribute("href");
+    const isActive = href === path || (href === "/projects" && path.startsWith("/projects"));
+    link.toggleAttribute("aria-current", isActive);
+  });
 };
 
 const syncPressedCards = () => {
@@ -78,30 +102,56 @@ const syncPressedCards = () => {
   });
 };
 
-const renderDetail = (project) => {
+const replaceChips = (selector, items) => {
+  const node = document.querySelector(selector);
+  node?.replaceChildren(...items.map(createChip));
+};
+
+const renderProjectDetail = (project) => {
   const detail = document.querySelector("[data-project-detail]");
 
   if (!detail || !project) return;
 
-  detail.querySelector("[data-detail-kicker]").textContent = project.kicker;
+  detail.querySelector("[data-detail-category]").textContent = `${project.category} · ${project.year}`;
   detail.querySelector("[data-detail-title]").textContent = project.title;
   detail.querySelector("[data-detail-summary]").textContent = project.summary;
-  detail.querySelector("[data-detail-status]").textContent = project.status;
-  detail.querySelector("[data-detail-path]").textContent = project.assetsPath;
+  detail.querySelector("[data-detail-path]").textContent = `${project.assetsPath}hero/`;
+  detail.querySelector("[data-detail-role]").textContent = project.role;
+  detail.querySelector("[data-detail-timeline]").textContent = project.timeline;
+  detail.querySelector("[data-detail-year]").textContent = project.year;
+  detail.querySelector("[data-detail-deliverables]").textContent = project.deliverables.join(" · ");
+  detail.querySelector("[data-detail-problem]").textContent = project.sections.problem;
+  detail.querySelector("[data-detail-outcome]").textContent = project.sections.outcome;
+  detail.querySelector("[data-detail-hero]").style.setProperty("--placeholder-label", `"${project.title}"`);
 
-  const principleList = detail.querySelector("[data-detail-principles]");
-  principleList.replaceChildren(...project.principles.map(createPrincipleChip));
+  replaceChips("[data-detail-research]", project.sections.research);
+  replaceChips("[data-detail-process]", project.sections.process);
+  replaceChips("[data-detail-cmf]", project.sections.cmf);
+
+  const stats = project.outcomeStats.map((stat) => {
+    const block = document.createElement("div");
+    block.className = "stat-block";
+    block.innerHTML = `<strong>${stat}</strong><span>${project.themeDirection}</span>`;
+    return block;
+  });
+  detail.querySelector("[data-detail-stats]").replaceChildren(...stats);
+
+  const galleryItems = project.galleryImages.map((folder) => {
+    const tile = document.createElement("div");
+    tile.className = "gallery-tile";
+    tile.innerHTML = `<span>${folder}</span><strong>${project.assetsPath}${folder}/</strong>`;
+    return tile;
+  });
+  detail.querySelector("[data-detail-gallery]").replaceChildren(...galleryItems);
 };
 
-const activateProject = (project, shouldScroll = false) => {
-  activeProject = project;
-  applyTheme(project.theme);
-  renderDetail(project);
-  syncPressedCards();
+const activateProject = (project) => {
+  if (!project) return;
 
-  if (shouldScroll) {
-    document.querySelector("[data-project-detail]")?.scrollIntoView({ behavior: "smooth", block: "start" });
-  }
+  activeProject = project;
+  applyTheme(project.accentTheme);
+  renderProjectDetail(project);
+  syncPressedCards();
 };
 
 const renderProjectCards = () => {
@@ -110,38 +160,87 @@ const renderProjectCards = () => {
   if (!grid || projects.length === 0) return;
 
   const cards = projects.map((project, index) => {
-    const card = document.createElement("button");
+    const card = document.createElement("a");
     card.className = "project-card";
-    card.type = "button";
+    card.href = projectRoute(project.slug);
+    card.dataset.route = "";
     card.dataset.slug = project.slug;
     card.setAttribute("aria-pressed", "false");
-    card.style.setProperty("--card-accent", project.theme.accent);
-    card.style.setProperty("--card-canvas", project.theme.canvas);
-    card.style.setProperty("--card-glow", project.theme.glowOne);
+    card.style.setProperty("--card-accent", project.accentTheme.accent);
+    card.style.setProperty("--card-canvas", project.accentTheme.canvas);
+    card.style.setProperty("--card-glow", project.accentTheme.glowOne);
 
     const number = String(index + 1).padStart(2, "0");
     card.innerHTML = `
-      <span class="project-kicker">${number} · ${project.kicker}</span>
+      <span class="project-kicker">${number} · ${project.category}</span>
       <div class="project-card-content">
         <h3>${project.title}</h3>
         <p>${project.summary}</p>
-        <span class="project-status">${project.status}</span>
+        <span class="project-status">${project.themeDirection}</span>
       </div>
     `;
 
-    card.addEventListener("mouseenter", () => applyTheme(project.theme));
-    card.addEventListener("focus", () => applyTheme(project.theme));
-    card.addEventListener("mouseleave", () => applyTheme(activeProject?.theme ?? defaultTheme));
-    card.addEventListener("blur", () => applyTheme(activeProject?.theme ?? defaultTheme));
-    card.addEventListener("click", () => activateProject(project, true));
+    card.addEventListener("mouseenter", () => applyTheme(project.accentTheme));
+    card.addEventListener("focus", () => applyTheme(project.accentTheme));
+    card.addEventListener("mouseleave", () => applyTheme(activeProject?.accentTheme ?? defaultTheme));
+    card.addEventListener("blur", () => applyTheme(activeProject?.accentTheme ?? defaultTheme));
 
     return card;
   });
 
   grid.replaceChildren(...cards);
-  activateProject(projects[0]);
+};
+
+const renderAbout = () => {
+  const groups = sitePages.about?.groups ?? ["Bio", "Education", "Experience", "Awards", "Skills"];
+  document.querySelector("[data-about-groups]")?.replaceChildren(...groups.map(createChip));
+};
+
+const routeTo = (path, shouldPush = true) => {
+  const cleanPath = path === "" ? "/" : path;
+  const project = getProjectFromPath(cleanPath);
+
+  if (shouldPush && cleanPath !== window.location.pathname) {
+    window.history.pushState({}, "", cleanPath);
+  }
+
+  if (project) {
+    activateProject(project);
+    showView("project-detail");
+  } else if (cleanPath.startsWith("/projects")) {
+    activateProject(activeProject ?? projects[0]);
+    showView("projects");
+  } else if (cleanPath.startsWith("/about")) {
+    applyTheme(defaultTheme);
+    showView("about");
+  } else if (cleanPath.startsWith("/contact")) {
+    applyTheme(defaultTheme);
+    showView("contact");
+  } else {
+    applyTheme(defaultTheme);
+    showView("home");
+  }
+
+  syncActiveNav();
+  window.scrollTo({ top: 0, behavior: shouldPush && !reduceMotionQuery.matches ? "smooth" : "auto" });
+};
+
+const bindRoutes = () => {
+  document.addEventListener("click", (event) => {
+    const link = event.target.closest("a[data-route]");
+
+    if (!link || link.origin !== window.location.origin) return;
+
+    event.preventDefault();
+    routeTo(link.pathname);
+  });
+
+  window.addEventListener("popstate", () => routeTo(window.location.pathname, false));
 };
 
 syncPointerTracking();
 renderProjectCards();
+renderAbout();
+bindRoutes();
+routeTo(window.location.pathname, false);
 reduceMotionQuery.addEventListener("change", syncPointerTracking);

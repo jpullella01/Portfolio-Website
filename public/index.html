@@ -3,11 +3,11 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Julianne Designs — elegant, minimal, futuristic portfolio landing page." />
+    <meta name="description" content="Julianne Designs — a clean industrial design portfolio with reusable project case-study pages." />
     <meta name="author" content="Julianne Designs" />
-    <meta name="theme-color" content="#f4f5f9" />
+    <meta name="theme-color" content="#F6F1EC" />
     <meta property="og:title" content="Julianne Designs" />
-    <meta property="og:description" content="Elegant, minimal, futuristic visual systems for digital identities." />
+    <meta property="og:description" content="Industrial design portfolio organized around reusable project templates and warm project themes." />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
     <title>Julianne Designs</title>
@@ -15,22 +15,23 @@
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
-    <a class="skip-link" href="#hero-title">Skip to main content</a>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
     <div class="ambient ambient-one" aria-hidden="true"></div>
     <div class="ambient ambient-two" aria-hidden="true"></div>
 
     <header class="site-header" aria-label="Primary navigation">
-      <a class="brand-mark" href="#hero" aria-label="Julianne Designs home">JD</a>
-      <nav class="top-nav" aria-label="Site sections">
-        <a href="#portfolio">Portfolio</a>
-        <a href="#project-detail">Projects</a>
-        <a href="#about">About</a>
+      <a class="brand-mark" href="/" data-route aria-label="Julianne Designs home">JD</a>
+      <nav class="top-nav" aria-label="Site pages">
+        <a href="/" data-route>Home</a>
+        <a href="/about" data-route>About</a>
+        <a href="/projects" data-route>Projects</a>
+        <a href="/contact" data-route>Contact</a>
       </nav>
-      <a class="contact-link" href="mailto:hello@juliannedesigns.example" aria-label="Email Julianne Designs">Contact</a>
+      <a class="contact-link" href="mailto:hello@juliannedesigns.example" aria-label="Email Julianne Designs">Email</a>
     </header>
 
-    <main id="hero" class="hero-shell">
-      <section class="hero-stage" aria-labelledby="hero-title">
+    <main id="main-content" class="page-shell">
+      <section class="hero-stage page-view" data-view="home" aria-labelledby="hero-title">
         <div class="index-rail" aria-hidden="true">
           <span class="rail-dot active"></span>
           <span class="rail-dot"></span>
@@ -45,59 +46,127 @@
         </div>
 
         <article class="glass-card">
-          <p class="eyebrow">Independent design studio / minimal digital identities</p>
+          <p class="eyebrow">Home / featured project navigation</p>
           <h1 id="hero-title">Julianne Designs</h1>
           <p class="hero-copy">
-            Elegant, fogged-glass visual systems shaped with quiet motion, thin lines, and a futuristic editorial feel.
+            A clean portfolio system for industrial design work, built around generous whitespace, warm neutral color, bold headlines, large imagery zones, and reusable case-study pages.
           </p>
-          <div class="card-actions" aria-label="Featured sections">
-            <a href="#portfolio">View portfolio</a>
-            <a href="#project-detail">Explore themes</a>
+          <div class="card-actions" aria-label="Featured actions">
+            <a href="/projects" data-route>View projects</a>
+            <a href="/about" data-route>About Julianne</a>
           </div>
         </article>
 
-        <aside id="portfolio" class="side-notes" aria-label="Portfolio preview">
-          <span>01 · Brand systems</span>
-          <span>02 · Web direction</span>
-          <span>03 · Launch visuals</span>
+        <aside class="side-notes" aria-label="Site structure preview">
+          <span>01 · Home</span>
+          <span>02 · Projects</span>
+          <span>03 · Case studies</span>
         </aside>
       </section>
 
-      <section class="project-system" aria-labelledby="portfolio-title">
+      <section class="project-system page-view" data-view="projects" aria-labelledby="portfolio-title">
         <div class="section-heading">
-          <p class="eyebrow">Theme system / design-board placeholders</p>
-          <h2 id="portfolio-title">Each project can reshape the whole site without rewriting the site.</h2>
+          <p class="eyebrow">Projects / shared template + unique accent themes</p>
+          <h2 id="portfolio-title">Six project pages, one reusable portfolio system.</h2>
           <p>
-            Project color, tone, image paths, and design principles live in one manifest. Hover or focus a project to preview its theme; open it to keep the theme active while the placeholder detail page is ready for final image uploads.
+            Every project uses the same hero, overview, problem, research, process, CMF, outcome, and gallery structure while keeping its own accent color, image framing, and visual direction.
           </p>
         </div>
         <div class="project-grid" data-project-grid></div>
       </section>
 
-      <section id="project-detail" class="project-detail" data-project-detail aria-live="polite">
-        <div>
-          <p class="eyebrow" data-detail-kicker>Project system</p>
-          <h2 data-detail-title>Choose a project theme</h2>
-          <p data-detail-summary>
-            Select any project placeholder above to preview a fully themed project page and confirm where high-resolution design-board imagery will appear later.
-          </p>
-          <div class="principle-list" data-detail-principles></div>
-        </div>
-        <div class="asset-plan">
-          <span data-detail-status>Ready for full-resolution uploads</span>
-          <strong data-detail-path>/assets/projects/{project-slug}/</strong>
-          <p>
-            Upload the finished boards to the project folder, then point the manifest at those files. The layout will reveal imagery automatically when paths are present.
-          </p>
-        </div>
+      <article class="project-page page-view" data-view="project-detail" data-project-detail aria-live="polite">
+        <section class="project-hero">
+          <div>
+            <p class="eyebrow" data-detail-category>Project category</p>
+            <h1 data-detail-title>Project title</h1>
+            <p data-detail-summary>Project summary</p>
+            <div class="card-actions">
+              <a href="/projects" data-route>Back to projects</a>
+              <a href="/contact" data-route>Discuss work</a>
+            </div>
+          </div>
+          <div class="image-placeholder" data-detail-hero>
+            <span>Hero image</span>
+            <strong data-detail-path>/assets/projects/{slug}/hero/</strong>
+          </div>
+        </section>
+
+        <section class="project-overview section-card">
+          <p class="eyebrow">Overview</p>
+          <div class="overview-grid">
+            <div><span>Role</span><strong data-detail-role></strong></div>
+            <div><span>Timeline</span><strong data-detail-timeline></strong></div>
+            <div><span>Year</span><strong data-detail-year></strong></div>
+            <div><span>Deliverables</span><strong data-detail-deliverables></strong></div>
+          </div>
+        </section>
+
+        <section class="case-study-grid" aria-label="Project case study sections">
+          <div class="section-card">
+            <p class="eyebrow">Problem / opportunity</p>
+            <h2>The design challenge</h2>
+            <p data-detail-problem></p>
+          </div>
+          <div class="section-card">
+            <p class="eyebrow">Research / insights</p>
+            <h2>Inputs and observations</h2>
+            <div class="principle-list" data-detail-research></div>
+          </div>
+          <div class="section-card">
+            <p class="eyebrow">Process</p>
+            <h2>Sketch, iterate, test, develop</h2>
+            <div class="principle-list" data-detail-process></div>
+          </div>
+          <div class="section-card">
+            <p class="eyebrow">CMF / materials / visual system</p>
+            <h2>Project language</h2>
+            <div class="principle-list" data-detail-cmf></div>
+          </div>
+          <div class="section-card section-card-wide">
+            <p class="eyebrow">Outcome / impact</p>
+            <h2>Final result</h2>
+            <p data-detail-outcome></p>
+            <div class="stat-row" data-detail-stats></div>
+          </div>
+        </section>
+
+        <section class="project-gallery section-card">
+          <div>
+            <p class="eyebrow">Gallery</p>
+            <h2>Grouped image folders</h2>
+            <p>Each tile maps to a predictable folder inside the project asset directory for hero, research, process, CMF, final, and gallery imagery.</p>
+          </div>
+          <div class="gallery-grid" data-detail-gallery></div>
+        </section>
+      </article>
+
+      <section class="simple-page page-view" data-view="about" aria-labelledby="about-title">
+        <p class="eyebrow">About / profile structure</p>
+        <h1 id="about-title">Bio, education, experience, awards, and skills.</h1>
+        <p>
+          This page is ready for Julianne's biography, education history, professional experience, awards, and a concise skills taxonomy. It keeps the same warm global system as the rest of the portfolio.
+        </p>
+        <div class="about-strip" data-about-groups></div>
       </section>
 
-      <section id="about" class="about-strip" aria-label="About Julianne Designs">
-        <span>Soft precision</span>
-        <span>Glass interfaces</span>
-        <span>Quietly futuristic</span>
+      <section class="simple-page page-view" data-view="contact" aria-labelledby="contact-title">
+        <p class="eyebrow">Contact / call to action</p>
+        <h1 id="contact-title">Let’s talk about the next project.</h1>
+        <p>
+          Use this page for direct contact information, collaboration prompts, and a simple call-to-action that points visitors toward inquiries or portfolio follow-up.
+        </p>
+        <div class="card-actions">
+          <a href="mailto:hello@juliannedesigns.example">Email Julianne</a>
+          <a href="/projects" data-route>Review projects</a>
+        </div>
       </section>
     </main>
+
+    <footer class="site-footer">
+      <span>Julianne Designs</span>
+      <span>Reusable project template · Project accent themes · Organized content files</span>
+    </footer>
 
     <script src="/data/projects.js" defer></script>
     <script src="/script.js" defer></script>
