@@ -17,7 +17,7 @@
   --grid-line: rgba(30, 30, 30, 0.055);
   --cursor-x: 50vw;
   --cursor-y: 50vh;
-  --font-rounded: "Nunito Sans", ui-rounded, "Arial Rounded MT Bold", "Avenir Next Rounded", "Helvetica Neue", Arial, sans-serif;
+  --font-rounded: "Gotham Rounded", "Gotham Rounded SSm", "Gotham Rounded A", "Gotham Rounded B", "Gotham Rounded Bold", "Arial Rounded MT Bold", "Avenir Next Rounded", ui-rounded, "Helvetica Neue", Arial, sans-serif;
 }
 
 * {
