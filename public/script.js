@@ -159,7 +159,7 @@ const renderProjectCards = () => {
 
   if (!grid || projects.length === 0) return;
 
-  const cards = projects.map((project, index) => {
+  const cards = projects.map((project) => {
     const card = document.createElement("a");
     card.className = "project-card";
     card.href = projectRoute(project.slug);
@@ -170,13 +170,11 @@ const renderProjectCards = () => {
     card.style.setProperty("--card-canvas", project.accentTheme.canvas);
     card.style.setProperty("--card-glow", project.accentTheme.glowOne);
 
-    const number = String(index + 1).padStart(2, "0");
     card.innerHTML = `
-      <span class="project-kicker">${number} · ${project.category}</span>
       <div class="project-card-content">
         <h3>${project.title}</h3>
         <p>${project.summary}</p>
-        <span class="project-status">${project.themeDirection}</span>
+        <span class="project-status">${project.category}</span>
       </div>
     `;
 
