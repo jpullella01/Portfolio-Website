@@ -21,47 +21,33 @@
 
     <header class="site-header" aria-label="Primary navigation">
       <a class="brand-mark" href="/" data-route aria-label="Julianne Designs home">JD</a>
-      <nav class="top-nav" aria-label="Site pages">
-        <a href="/" data-route>Home</a>
-        <a href="/about" data-route>About</a>
-        <a href="/projects" data-route>Projects</a>
-        <a href="/contact" data-route>Contact</a>
-      </nav>
-      <a class="contact-link" href="mailto:hello@juliannedesigns.example" aria-label="Email Julianne Designs">Email</a>
+      <button class="menu-toggle" type="button" aria-label="Open menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </header>
 
     <main id="main-content" class="page-shell">
       <section class="hero-stage page-view" data-view="home" aria-labelledby="hero-title">
-        <div class="index-rail" aria-hidden="true">
-          <span class="rail-dot active"></span>
-          <span class="rail-dot"></span>
-          <span class="rail-dot"></span>
-          <strong>01</strong>
+        <div class="sculpture-field" aria-hidden="true">
+          <span class="glass-form upper-left-disc"></span>
+          <span class="glass-form left-petal"></span>
+          <span class="glass-form bottom-sheet bottom-sheet-a"></span>
+          <span class="glass-form bottom-sheet bottom-sheet-b"></span>
+          <span class="glass-form bottom-sheet bottom-sheet-c"></span>
+          <span class="glass-form right-ribbon"></span>
+          <span class="glass-form right-fold"></span>
+          <span class="glass-form right-blue-fold"></span>
         </div>
 
-        <div class="orb-wrap" aria-hidden="true">
-          <img class="lens-orb" src="/assets/lens-orb.svg" alt="" />
-          <span class="orb-line line-a"></span>
-          <span class="orb-line line-b"></span>
-        </div>
-
-        <article class="glass-card">
-          <p class="eyebrow">Home / featured project navigation</p>
-          <h1 id="hero-title">Julianne Designs</h1>
-          <p class="hero-copy">
-            A clean portfolio system for industrial design work, built around generous whitespace, warm neutral color, bold headlines, large imagery zones, and reusable case-study pages.
-          </p>
-          <div class="card-actions" aria-label="Featured actions">
-            <a href="/projects" data-route>View projects</a>
-            <a href="/about" data-route>About Julianne</a>
+        <div class="hero-content">
+          <h1 id="hero-title"><span>Julianne</span><span>Designs</span></h1>
+          <div class="hero-actions" aria-label="Featured actions">
+            <a href="/projects" data-route>See more work</a>
+            <a href="/about" data-route>About me</a>
           </div>
-        </article>
-
-        <aside class="side-notes" aria-label="Site structure preview">
-          <span>01 · Home</span>
-          <span>02 · Projects</span>
-          <span>03 · Case studies</span>
-        </aside>
+        </div>
       </section>
 
       <section class="project-system page-view" data-view="projects" aria-labelledby="portfolio-title">
