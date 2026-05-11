@@ -1330,3 +1330,10 @@ body::after {
     max-width: min(100%, 21rem);
   }
 }
+
+/* Give non-home pages breathing room below the fixed navigation. */
+.project-system,
+.project-page,
+.simple-page {
+  padding-top: clamp(7.5rem, 14vh, 10rem);
+}
