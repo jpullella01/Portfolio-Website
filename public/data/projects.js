@@ -214,7 +214,7 @@ window.PORTFOLIO_PROJECTS = [
 
 window.SITE_PAGES = {
   home: {
-    title: "Julianne Designs",
+    title: "PORTFOLIO",
     kicker: "Industrial design portfolio / clean case-study system",
     summary:
       "A warm, image-forward portfolio organized around reusable project pages, project-specific accents, and a simple path from featured work to contact.",
