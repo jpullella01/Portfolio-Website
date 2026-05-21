@@ -383,6 +383,13 @@ h1 {
   line-height: 1;
 }
 
+
+#portfolio-title,
+#about-title {
+  display: inline-block;
+  padding: 0.45rem 0.75rem;
+}
+
 .project-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
