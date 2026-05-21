@@ -1395,3 +1395,110 @@ body::after {
     line-height: 0.9;
   }
 }
+
+/* Unified hero/header layout across Home, Projects, About, and Contact views. */
+.page-hero {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  padding: 64px 64px 96px;
+}
+
+.page-hero-eyebrow {
+  margin: 0 0 48px;
+  color: #6f6a66;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+.page-hero h1 {
+  margin: 0 0 36px;
+  max-width: 900px;
+  color: #1f1f1f;
+  font-size: 96px;
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+}
+
+.page-hero-body {
+  margin: 0;
+  max-width: 980px;
+  color: #6f6a66;
+  font-size: 34px;
+  font-weight: 400;
+  line-height: 1.9;
+  letter-spacing: 0.04em;
+}
+
+.page-hero-actions {
+  margin-top: 72px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.page-hero-actions a {
+  padding: 24px 52px;
+  border-radius: 999px;
+  border: 1px solid #d8d4cf;
+  background: transparent;
+  color: #222222;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.hero-stage {
+  align-items: start;
+}
+
+@media (max-width: 1024px) {
+  .page-hero {
+    padding: 48px 40px 72px;
+  }
+
+  .page-hero-eyebrow {
+    font-size: 20px;
+  }
+
+  .page-hero h1 {
+    font-size: 72px;
+  }
+
+  .page-hero-body {
+    font-size: 26px;
+  }
+}
+
+@media (max-width: 640px) {
+  .page-hero {
+    padding: 40px 24px 64px;
+  }
+
+  .page-hero-eyebrow {
+    font-size: 16px;
+  }
+
+  .page-hero h1 {
+    font-size: 48px;
+  }
+
+  .page-hero-body {
+    font-size: 20px;
+  }
+
+  .page-hero-actions {
+    gap: 20px;
+  }
+
+  .page-hero-actions a {
+    width: 100%;
+    text-align: center;
+  }
+}

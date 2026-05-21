@@ -32,6 +32,15 @@
 
     <main id="main-content" class="page-shell">
       <section class="hero-stage page-view" data-view="home" aria-labelledby="hero-title">
+        <div class="page-hero">
+          <p class="page-hero-eyebrow">Featured work</p>
+          <h1 id="hero-title">Portfolio</h1>
+          <p class="page-hero-body">A curated collection of industrial design projects spanning strategy, form development, and production-ready outcomes.</p>
+          <div class="page-hero-actions" aria-label="Featured actions">
+            <a href="/projects" data-route>See more work</a>
+            <a href="/about" data-route>About me</a>
+          </div>
+        </div>
         <div class="sculpture-field" aria-hidden="true">
           <span class="glass-form upper-left-disc"></span>
           <span class="glass-form left-petal"></span>
@@ -43,18 +52,18 @@
           <span class="glass-form right-blue-fold"></span>
         </div>
 
-        <div class="hero-content">
-          <h1 id="hero-title"><span>PORTFOLIO</span></h1>
-          <div class="hero-actions" aria-label="Featured actions">
-            <a href="/projects" data-route>See more work</a>
-            <a href="/about" data-route>About me</a>
-          </div>
-        </div>
+        
       </section>
 
       <section class="project-system page-view" data-view="projects" aria-labelledby="portfolio-title">
-        <div class="section-heading">
-          <h2 id="portfolio-title">project highlights</h2>
+        <div class="page-hero">
+          <p class="page-hero-eyebrow">Selected projects</p>
+          <h1 id="portfolio-title">Project highlights</h1>
+          <p class="page-hero-body">Explore recent case studies, from concept and user insight to final detailing, storytelling, and launch-ready deliverables.</p>
+          <div class="page-hero-actions">
+            <a href="/contact" data-route>Start a project</a>
+            <a href="/about" data-route>About Julianne</a>
+          </div>
         </div>
         <div class="project-grid" data-project-grid></div>
       </section>
@@ -126,23 +135,31 @@
       </article>
 
       <section class="simple-page page-view" data-view="about" aria-labelledby="about-title">
-        <p class="eyebrow">About / profile structure</p>
-        <h1 id="about-title">get to know me</h1>
-        <p>
+        <div class="page-hero">
+          <p class="page-hero-eyebrow">About</p>
+          <h1 id="about-title">Get to know me</h1>
+          <p class="page-hero-body">
           This page is ready for Julianne's biography, education history, professional experience, awards, and a concise skills taxonomy. It keeps the same warm global system as the rest of the portfolio.
-        </p>
+          </p>
+          <div class="page-hero-actions">
+            <a href="/projects" data-route>View projects</a>
+            <a href="/contact" data-route>Work together</a>
+          </div>
+        </div>
         <div class="about-strip" data-about-groups></div>
       </section>
 
       <section class="simple-page page-view" data-view="contact" aria-labelledby="contact-title">
-        <p class="eyebrow">Contact / call to action</p>
-        <h1 id="contact-title">Let’s connect.</h1>
-        <p>
+        <div class="page-hero">
+          <p class="page-hero-eyebrow">Contact</p>
+          <h1 id="contact-title">Let's connect</h1>
+          <p class="page-hero-body">
           Use this page for direct contact information, collaboration prompts, and a simple call-to-action that points visitors toward inquiries or portfolio follow-up.
-        </p>
-        <div class="card-actions">
-          <a href="mailto:hello@juliannedesigns.example">Email Julianne</a>
-          <a href="/projects" data-route>Review projects</a>
+          </p>
+          <div class="page-hero-actions">
+            <a href="mailto:hello@juliannedesigns.example">Email Julianne</a>
+            <a href="/projects" data-route>Review projects</a>
+          </div>
         </div>
       </section>
     </main>
