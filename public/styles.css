@@ -1394,3 +1394,144 @@ body::after {
     line-height: 0.9;
   }
 }
+
+
+/* Portfolio page typography + layout refinements */
+:root {
+  --font-primary: "Proxima Nova", "Inter", "Helvetica Neue", Arial, sans-serif;
+}
+
+.site-header {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+.top-nav {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  text-transform: none;
+}
+
+.top-nav a {
+  opacity: 1;
+}
+
+.project-system {
+  max-width: 1240px;
+}
+
+.section-heading {
+  margin-bottom: 2.5rem;
+}
+
+#portfolio-title {
+  padding: 0;
+  margin: 0;
+  color: #000;
+  font-size: 72px;
+  font-weight: 700;
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+  text-transform: none;
+}
+
+.project-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.25rem, 2.8vw, 2rem);
+}
+
+.project-card {
+  min-height: unset;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  transform: none;
+  gap: 1rem;
+}
+
+.project-card::before,
+.project-card::after { display: none; }
+
+.project-card:hover,
+.project-card:focus-visible,
+.project-card[aria-pressed="true"] {
+  border: 0;
+  box-shadow: none;
+  transform: none;
+}
+
+.project-card-image {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at 24% 22%, color-mix(in srgb, var(--card-glow, #f2ded6) 84%, white), transparent 38%),
+    linear-gradient(145deg, color-mix(in srgb, var(--card-canvas, #f6f1ec) 78%, white), color-mix(in srgb, var(--card-accent, #e36a5c) 20%, white));
+}
+
+.project-card-meta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.project-card h3 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  text-transform: none;
+  color: #000;
+}
+
+.project-year {
+  margin: 0;
+  color: #6F7280;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+@media (max-width: 900px) {
+  .site-header {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .brand-mark {
+    justify-self: center;
+  }
+
+  .top-nav {
+    justify-self: center;
+    font-size: 28px;
+    gap: 1.5rem;
+  }
+
+  #portfolio-title {
+    font-size: 56px;
+    line-height: 1.02;
+  }
+
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-card-image {
+    border-radius: 20px;
+  }
+}
