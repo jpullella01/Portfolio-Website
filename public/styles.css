@@ -1394,3 +1394,74 @@ body::after {
     line-height: 0.9;
   }
 }
+
+/* Editorial typography system for About and Contact pages */
+:root {
+  --editorial-muted: #6F7280;
+}
+
+.editorial-page {
+  display: grid;
+  gap: clamp(1.4rem, 3vw, 2rem);
+  align-content: start;
+}
+
+.editorial-block {
+  display: grid;
+  gap: clamp(1rem, 2.2vw, 1.35rem);
+  max-width: min(100%, 72rem);
+}
+
+.editorial-page .eyebrow {
+  margin: 0;
+  color: var(--editorial-muted);
+  font-family: var(--font-primary);
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  text-transform: none;
+}
+
+.editorial-page h1 {
+  max-width: min(16ch, 100%);
+  margin: 0;
+  color: #000000;
+  font-family: var(--font-primary);
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  text-transform: none;
+}
+
+.editorial-page p {
+  margin: 0;
+  max-width: min(100%, 72rem);
+  color: var(--editorial-muted);
+  font-family: var(--font-primary);
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+}
+
+.editorial-page .card-actions {
+  margin-top: clamp(0.2rem, 1vw, 0.6rem);
+}
+
+@media (max-width: 700px) {
+  .editorial-block {
+    gap: 1rem;
+  }
+
+  .editorial-page .eyebrow,
+  .editorial-page p {
+    font-size: 28px;
+  }
+
+  .editorial-page h1 {
+    max-width: 100%;
+    font-size: 48px;
+  }
+}
