@@ -171,10 +171,10 @@ const renderProjectCards = () => {
     card.style.setProperty("--card-glow", project.accentTheme.glowOne);
 
     card.innerHTML = `
-      <div class="project-card-image" aria-hidden="true"></div>
-      <div class="project-card-meta">
+      <div class="project-card-content">
         <h3>${project.title}</h3>
-        <p class="project-year">${project.year}</p>
+        <p>${project.summary}</p>
+        <span class="project-status">${project.category}</span>
       </div>
     `;
 
