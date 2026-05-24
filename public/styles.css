@@ -1465,3 +1465,57 @@ body::after {
     line-height: 1.02;
   }
 }
+
+
+.paintings-page {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: clamp(1.5rem, 3vw, 3rem);
+  border: 0;
+  border-radius: 0;
+  background: #fff;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+.paintings-intro h1 {
+  max-width: none;
+  margin: 0;
+  color: #111;
+  font-size: clamp(3rem, 8vw, 5.5rem);
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
+.paintings-intro p {
+  max-width: 42rem;
+  margin: 0.85rem 0 0;
+  color: #505050;
+}
+
+.paintings-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1rem, 2.2vw, 1.8rem);
+  margin-top: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.painting-card {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 1.9rem;
+  background: #f2f2f2;
+}
+
+.painting-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 700px) {
+  .paintings-grid {
+    grid-template-columns: 1fr;
+  }
+}
