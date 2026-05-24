@@ -33,7 +33,7 @@ const themePropertyMap = {
   grid: "--grid-line",
 };
 
-const projectRoute = (slug) => `/projects/${slug}`;
+const projectRoute = (slug) => (slug === "paintings" ? "/paintings" : `/projects/${slug}`);
 
 const applyTheme = (theme = defaultTheme) => {
   Object.entries(themePropertyMap).forEach(([key, property]) => {
@@ -208,6 +208,9 @@ const routeTo = (path, shouldPush = true) => {
   } else if (cleanPath.startsWith("/projects")) {
     activateProject(activeProject ?? projects[0]);
     showView("projects");
+  } else if (cleanPath.startsWith("/paintings")) {
+    applyTheme(defaultTheme);
+    showView("paintings");
   } else if (cleanPath.startsWith("/about")) {
     applyTheme(defaultTheme);
     showView("about");
