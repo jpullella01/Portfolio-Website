@@ -1384,9 +1384,27 @@ body::after {
 }
 
 @media (max-width: 700px) {
+  .project-system {
+    padding-top: 9.5rem;
+    padding-bottom: 4rem;
+  }
+
+  .project-system .section-heading {
+    margin-bottom: 3rem;
+  }
+
+  .project-grid {
+    row-gap: 2.75rem;
+  }
+
   .project-system #portfolio-title {
-    font-size: 56px;
+    font-size: 48px;
     line-height: 1.02;
+  }
+
+  .project-card h3,
+  .project-year {
+    font-size: 20px;
   }
 
   .project-card-image {
@@ -1464,12 +1482,12 @@ body::after {
 
   .editorial-page .eyebrow,
   .editorial-page p {
-    font-size: 28px;
+    font-size: 20px;
   }
 
   .editorial-page h1 {
     max-width: 100%;
-    font-size: 56px;
+    font-size: 48px;
     line-height: 1.02;
   }
 }
