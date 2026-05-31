@@ -435,7 +435,7 @@ h1 {
   align-items: flex-start;
   justify-content: space-between;
   gap: 1rem;
-  padding: 0 clamp(1.2rem, 4vw, 2.4rem);
+  padding: 0;
 }
 
 .project-card h3 {
@@ -450,6 +450,7 @@ h1 {
 
 .project-year {
   margin: 0;
+  text-align: right;
   color: #6f7280;
   font-size: 24px;
   font-weight: 400;
@@ -1356,9 +1357,15 @@ body::after {
   padding-top: clamp(7.5rem, 14vh, 10rem);
 }
 
+.project-system {
+  --project-system-gutter: clamp(1rem, 4vw, 2.5rem);
+  padding-inline: var(--project-system-gutter);
+}
+
 .project-system .section-heading {
   max-width: none;
   margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
+  padding-inline: 0;
 }
 
 .project-system #portfolio-title {
