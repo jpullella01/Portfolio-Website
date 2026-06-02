@@ -3,16 +3,16 @@ const reduceMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 const projects = window.PORTFOLIO_PROJECTS ?? [];
 const sitePages = window.SITE_PAGES ?? {};
 const defaultTheme = {
-  ink: "#1E1E1E",
-  muted: "#756b64",
-  canvas: "#F6F1EC",
-  glass: "rgba(255, 250, 244, 0.5)",
-  glassStrong: "rgba(255, 252, 248, 0.72)",
-  accent: "#E36A5C",
-  accentSoft: "rgba(227, 106, 92, 0.12)",
-  glowOne: "#F2DED6",
-  glowTwo: "#E7C9AE",
-  grid: "rgba(30, 30, 30, 0.055)",
+  ink: "#55585B",
+  muted: "#6a645f",
+  canvas: "#F2EFEA",
+  glass: "rgba(242, 239, 234, 0.56)",
+  glassStrong: "rgba(242, 239, 234, 0.78)",
+  accent: "#B88467",
+  accentSoft: "rgba(184, 132, 103, 0.15)",
+  glowOne: "#7E9986",
+  glowTwo: "#A98363",
+  grid: "rgba(85, 88, 91, 0.06)",
 };
 
 let activeProject = projects[0] ?? null;
