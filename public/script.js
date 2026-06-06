@@ -1,7 +1,8 @@
 const root = document.documentElement;
-const reduceMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 const projects = window.PORTFOLIO_PROJECTS ?? [];
 const sitePages = window.SITE_PAGES ?? {};
+
 const defaultTheme = {
   ink: "#55585B",
   muted: "#6a645f",
@@ -15,12 +16,7 @@ const defaultTheme = {
   grid: "rgba(85, 88, 91, 0.06)",
 };
 
-let activeProject = projects[0] ?? null;
-let animationFrame = null;
-let pointerX = window.innerWidth / 2;
-let pointerY = window.innerHeight / 2;
-
-const themePropertyMap = {
+const themeProperties = {
   ink: "--ink",
   muted: "--muted",
   canvas: "--canvas",
@@ -33,215 +29,164 @@ const themePropertyMap = {
   grid: "--grid-line",
 };
 
-const projectRoute = (slug) => (slug === "paintings" ? "/paintings" : `/projects/${slug}`);
+const $ = (selector, scope = document) => scope.querySelector(selector);
+const $$ = (selector, scope = document) => [...scope.querySelectorAll(selector)];
+const routeFor = ({ slug }) => (slug === "paintings" ? "/paintings" : `/projects/${slug}`);
+const makeNode = (tag, className = "", text) => {
+  const node = document.createElement(tag);
+  node.className = className;
+  if (text !== undefined) node.textContent = text;
+  return node;
+};
+const chip = (text) => makeNode("span", "", text);
+
+let activeProject = projects[0] ?? null;
+let cursorFrame = null;
+let cursor = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
 
 const applyTheme = (theme = defaultTheme) => {
-  Object.entries(themePropertyMap).forEach(([key, property]) => {
-    root.style.setProperty(property, theme[key] ?? defaultTheme[key]);
-  });
+  Object.entries(themeProperties).forEach(([key, property]) => root.style.setProperty(property, theme[key] ?? defaultTheme[key]));
 };
 
 const updateCursorGlow = () => {
-  root.style.setProperty("--cursor-x", `${pointerX}px`);
-  root.style.setProperty("--cursor-y", `${pointerY}px`);
-  animationFrame = null;
+  root.style.setProperty("--cursor-x", `${cursor.x}px`);
+  root.style.setProperty("--cursor-y", `${cursor.y}px`);
+  cursorFrame = null;
 };
 
-const handlePointerMove = (event) => {
-  pointerX = event.clientX;
-  pointerY = event.clientY;
-
-  if (animationFrame === null) {
-    animationFrame = window.requestAnimationFrame(updateCursorGlow);
-  }
+const trackPointer = ({ clientX, clientY }) => {
+  cursor = { x: clientX, y: clientY };
+  cursorFrame ??= window.requestAnimationFrame(updateCursorGlow);
 };
 
 const syncPointerTracking = () => {
-  window.removeEventListener("pointermove", handlePointerMove);
-
-  if (animationFrame !== null) {
-    window.cancelAnimationFrame(animationFrame);
-    animationFrame = null;
-  }
-
-  if (!reduceMotionQuery.matches) {
-    window.addEventListener("pointermove", handlePointerMove, { passive: true });
-  }
+  window.removeEventListener("pointermove", trackPointer);
+  if (cursorFrame) window.cancelAnimationFrame(cursorFrame);
+  cursorFrame = null;
+  if (!prefersReducedMotion.matches) window.addEventListener("pointermove", trackPointer, { passive: true });
 };
 
-const createChip = (text) => {
-  const chip = document.createElement("span");
-  chip.textContent = text;
-  return chip;
-};
-
-const showView = (viewName) => {
-  document.querySelectorAll("[data-view]").forEach((view) => {
-    view.hidden = view.dataset.view !== viewName;
-  });
-};
-
-const getProjectFromPath = (path = window.location.pathname) => {
+const projectFromPath = (path = window.location.pathname) => {
   const slug = path.match(/^\/projects\/([^/]+)\/?$/)?.[1];
   return projects.find((project) => project.slug === slug) ?? null;
 };
 
+const showView = (name) => $$('[data-view]').forEach((view) => (view.hidden = view.dataset.view !== name));
+
 const syncActiveNav = () => {
   const path = window.location.pathname;
-
-  document.querySelectorAll("[data-route]").forEach((link) => {
+  $$('[data-route]').forEach((link) => {
     const href = link.getAttribute("href");
-    const isActive = href === path || (href === "/projects" && path.startsWith("/projects"));
-    link.toggleAttribute("aria-current", isActive);
+    link.toggleAttribute("aria-current", href === path || (href === "/projects" && path.startsWith("/projects")));
   });
 };
 
-const syncPressedCards = () => {
-  document.querySelectorAll(".project-card").forEach((card) => {
-    card.setAttribute("aria-pressed", String(card.dataset.slug === activeProject?.slug));
-  });
+const syncProjectCards = () => {
+  $$(".project-card").forEach((card) => card.setAttribute("aria-pressed", String(card.dataset.slug === activeProject?.slug)));
 };
 
-const replaceChips = (selector, items) => {
-  const node = document.querySelector(selector);
-  node?.replaceChildren(...items.map(createChip));
-};
+const replaceChips = (selector, items = []) => $(selector)?.replaceChildren(...items.map(chip));
 
 const renderProjectDetail = (project) => {
-  const detail = document.querySelector("[data-project-detail]");
-
+  const detail = $("[data-project-detail]");
   if (!detail || !project) return;
 
-  detail.querySelector("[data-detail-category]").textContent = `${project.category} · ${project.year}`;
-  detail.querySelector("[data-detail-title]").textContent = project.title;
-  detail.querySelector("[data-detail-summary]").textContent = project.summary;
-  detail.querySelector("[data-detail-path]").textContent = `${project.assetsPath}hero/`;
-  detail.querySelector("[data-detail-role]").textContent = project.role;
-  detail.querySelector("[data-detail-timeline]").textContent = project.timeline;
-  detail.querySelector("[data-detail-year]").textContent = project.year;
-  detail.querySelector("[data-detail-deliverables]").textContent = project.deliverables.join(" · ");
-  detail.querySelector("[data-detail-problem]").textContent = project.sections.problem;
-  detail.querySelector("[data-detail-outcome]").textContent = project.sections.outcome;
-  detail.querySelector("[data-detail-hero]").style.setProperty("--placeholder-label", `"${project.title}"`);
+  Object.entries({
+    "[data-detail-category]": `${project.category} · ${project.year}`,
+    "[data-detail-title]": project.title,
+    "[data-detail-summary]": project.summary,
+    "[data-detail-path]": `${project.assetsPath}hero/`,
+    "[data-detail-role]": project.role,
+    "[data-detail-timeline]": project.timeline,
+    "[data-detail-year]": project.year,
+    "[data-detail-deliverables]": project.deliverables.join(" · "),
+    "[data-detail-problem]": project.sections.problem,
+    "[data-detail-outcome]": project.sections.outcome,
+  }).forEach(([selector, text]) => ($(selector, detail).textContent = text));
 
+  $("[data-detail-hero]", detail).style.setProperty("--placeholder-label", `"${project.title}"`);
   replaceChips("[data-detail-research]", project.sections.research);
   replaceChips("[data-detail-process]", project.sections.process);
   replaceChips("[data-detail-cmf]", project.sections.cmf);
 
-  const stats = project.outcomeStats.map((stat) => {
-    const block = document.createElement("div");
-    block.className = "stat-block";
-    block.innerHTML = `<strong>${stat}</strong><span>${project.themeDirection}</span>`;
-    return block;
-  });
-  detail.querySelector("[data-detail-stats]").replaceChildren(...stats);
+  $("[data-detail-stats]", detail).replaceChildren(
+    ...project.outcomeStats.map((stat) => {
+      const block = makeNode("div", "stat-block");
+      block.replaceChildren(makeNode("strong", "", stat), makeNode("span", "", project.themeDirection));
+      return block;
+    }),
+  );
 
-  const galleryItems = project.galleryImages.map((folder) => {
-    const tile = document.createElement("div");
-    tile.className = "gallery-tile";
-    tile.innerHTML = `<span>${folder}</span><strong>${project.assetsPath}${folder}/</strong>`;
-    return tile;
-  });
-  detail.querySelector("[data-detail-gallery]").replaceChildren(...galleryItems);
+  $("[data-detail-gallery]", detail).replaceChildren(
+    ...project.galleryImages.map((folder) => {
+      const tile = makeNode("div", "gallery-tile");
+      tile.replaceChildren(makeNode("span", "", folder), makeNode("strong", "", `${project.assetsPath}${folder}/`));
+      return tile;
+    }),
+  );
 };
 
 const activateProject = (project) => {
   if (!project) return;
-
   activeProject = project;
   applyTheme(project.accentTheme);
   renderProjectDetail(project);
-  syncPressedCards();
+  syncProjectCards();
 };
 
 const renderProjectCards = () => {
-  const grid = document.querySelector("[data-project-grid]");
+  const grid = $("[data-project-grid]");
+  if (!grid) return;
 
-  if (!grid || projects.length === 0) return;
+  grid.replaceChildren(
+    ...projects.map((project) => {
+      const card = makeNode("a", "project-card");
+      card.href = routeFor(project);
+      card.dataset.route = "";
+      card.dataset.slug = project.slug;
+      card.setAttribute("aria-pressed", "false");
+      Object.entries({
+        "--card-accent": project.accentTheme.accent,
+        "--card-canvas": project.accentTheme.canvas,
+        "--card-glow": project.accentTheme.glowOne,
+      }).forEach(([property, value]) => card.style.setProperty(property, value));
 
-  const cards = projects.map((project) => {
-    const card = document.createElement("a");
-    card.className = "project-card";
-    card.href = projectRoute(project.slug);
-    card.dataset.route = "";
-    card.dataset.slug = project.slug;
-    card.setAttribute("aria-pressed", "false");
-    card.style.setProperty("--card-accent", project.accentTheme.accent);
-    card.style.setProperty("--card-canvas", project.accentTheme.canvas);
-    card.style.setProperty("--card-glow", project.accentTheme.glowOne);
+      const meta = makeNode("div", "project-card-meta");
+      meta.replaceChildren(makeNode("h3", "", project.title), makeNode("p", "project-year", project.year));
+      card.replaceChildren(makeNode("div", "project-card-image"), meta);
 
-    card.innerHTML = `
-      <div class="project-card-image" aria-hidden="true"></div>
-      <div class="project-card-meta">
-        <h3>${project.title}</h3>
-        <p class="project-year">${project.year}</p>
-      </div>
-    `;
-
-    card.addEventListener("mouseenter", () => applyTheme(project.accentTheme));
-    card.addEventListener("focus", () => applyTheme(project.accentTheme));
-    card.addEventListener("mouseleave", () => applyTheme(activeProject?.accentTheme ?? defaultTheme));
-    card.addEventListener("blur", () => applyTheme(activeProject?.accentTheme ?? defaultTheme));
-
-    return card;
-  });
-
-  grid.replaceChildren(...cards);
+      ["mouseenter", "focus"].forEach((eventName) => card.addEventListener(eventName, () => applyTheme(project.accentTheme)));
+      ["mouseleave", "blur"].forEach((eventName) => card.addEventListener(eventName, () => applyTheme(activeProject?.accentTheme)));
+      return card;
+    }),
+  );
 };
 
-const renderAbout = () => {
-  const groups = sitePages.about?.groups ?? ["Bio", "Education", "Experience", "Awards", "Skills"];
-  document.querySelector("[data-about-groups]")?.replaceChildren(...groups.map(createChip));
-};
+const renderAbout = () => replaceChips("[data-about-groups]", sitePages.about?.groups ?? []);
 
-const routeTo = (path, shouldPush = true) => {
-  const cleanPath = path === "" ? "/" : path;
-  const project = getProjectFromPath(cleanPath);
+const routeTo = (path = "/", shouldPush = true) => {
+  const cleanPath = path || "/";
+  const project = projectFromPath(cleanPath);
+  const route = project ? "project-detail" : cleanPath.startsWith("/projects") ? "projects" : cleanPath.startsWith("/paintings") ? "paintings" : cleanPath.startsWith("/about") ? "about" : cleanPath.startsWith("/contact") ? "contact" : "home";
 
-  if (shouldPush && cleanPath !== window.location.pathname) {
-    window.history.pushState({}, "", cleanPath);
-  }
-
-  if (project) {
-    activateProject(project);
-    showView("project-detail");
-  } else if (cleanPath.startsWith("/projects")) {
-    activateProject(activeProject ?? projects[0]);
-    showView("projects");
-  } else if (cleanPath.startsWith("/paintings")) {
-    applyTheme(defaultTheme);
-    showView("paintings");
-  } else if (cleanPath.startsWith("/about")) {
-    applyTheme(defaultTheme);
-    showView("about");
-  } else if (cleanPath.startsWith("/contact")) {
-    applyTheme(defaultTheme);
-    showView("contact");
-  } else {
-    applyTheme(defaultTheme);
-    showView("home");
-  }
-
+  if (shouldPush && cleanPath !== window.location.pathname) window.history.pushState({}, "", cleanPath);
+  project ? activateProject(project) : route === "projects" ? activateProject(activeProject ?? projects[0]) : applyTheme(defaultTheme);
+  showView(route);
   syncActiveNav();
-  window.scrollTo({ top: 0, behavior: shouldPush && !reduceMotionQuery.matches ? "smooth" : "auto" });
+  window.scrollTo({ top: 0, behavior: shouldPush && !prefersReducedMotion.matches ? "smooth" : "auto" });
 };
 
-const bindRoutes = () => {
-  document.addEventListener("click", (event) => {
-    const link = event.target.closest("a[data-route]");
+document.addEventListener("click", (event) => {
+  const link = event.target.closest("a[data-route]");
+  if (!link || link.origin !== window.location.origin) return;
+  event.preventDefault();
+  routeTo(link.pathname);
+});
 
-    if (!link || link.origin !== window.location.origin) return;
-
-    event.preventDefault();
-    routeTo(link.pathname);
-  });
-
-  window.addEventListener("popstate", () => routeTo(window.location.pathname, false));
-};
+window.addEventListener("popstate", () => routeTo(window.location.pathname, false));
+prefersReducedMotion.addEventListener("change", syncPointerTracking);
 
 syncPointerTracking();
 renderProjectCards();
 renderAbout();
-bindRoutes();
 routeTo(window.location.pathname, false);
-reduceMotionQuery.addEventListener("change", syncPointerTracking);

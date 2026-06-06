@@ -193,101 +193,6 @@ body::after {
   margin: 0 auto;
 }
 
-.index-rail {
-  display: grid;
-  gap: 0.42rem;
-  align-content: center;
-  color: rgba(30, 30, 30, 0.1);
-}
-
-.index-rail strong {
-  margin-top: 0.5rem;
-  font-size: clamp(4rem, 9vw, 8.4rem);
-  line-height: 0.78;
-  letter-spacing: -0.09em;
-}
-
-.rail-dot {
-  width: 0.42rem;
-  height: 0.42rem;
-  border: 1px solid rgba(30, 30, 30, 0.19);
-  border-radius: 50%;
-}
-
-.rail-dot.active {
-  border-color: var(--accent);
-  background: var(--accent);
-  box-shadow: 0 0 0 4px var(--accent-soft);
-}
-
-.orb-wrap {
-  position: relative;
-  min-height: min(62vw, 38rem);
-  isolation: isolate;
-}
-
-.lens-orb {
-  position: absolute;
-  top: 50%;
-  left: 48%;
-  width: min(58vw, 52rem);
-  max-width: none;
-  filter: drop-shadow(0 3rem 6rem rgba(53, 45, 38, 0.18));
-  transform: translate(-50%, -50%) rotate(-3deg);
-  animation: floatLens 9s ease-in-out infinite;
-}
-
-.orb-line {
-  position: absolute;
-  border-radius: 999px;
-  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--accent) 42%, transparent), transparent);
-  transform-origin: center;
-  animation: shimmer 6s ease-in-out infinite;
-}
-
-.line-a {
-  top: 23%;
-  left: 15%;
-  width: 26rem;
-  height: 1px;
-  transform: rotate(-54deg);
-}
-
-.line-b {
-  right: 10%;
-  bottom: 22%;
-  width: 18rem;
-  height: 1px;
-  transform: rotate(-54deg);
-  animation-delay: -2s;
-}
-
-.glass-card,
-.section-card,
-.simple-page,
-.project-page {
-  border: 1px solid rgba(255, 255, 255, 0.68);
-  background: linear-gradient(145deg, var(--glass-strong), var(--glass));
-  box-shadow: 0 2rem 7rem rgba(66, 54, 45, 0.13), inset 0 1px 0 rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(30px) saturate(1.2);
-}
-
-.glass-card {
-  position: relative;
-  z-index: 2;
-  max-width: 34rem;
-  padding: clamp(1.35rem, 4vw, 2.6rem);
-  border-radius: 2rem;
-}
-
-.glass-card::before {
-  position: absolute;
-  inset: 0.8rem;
-  pointer-events: none;
-  content: "";
-  border: 1px solid rgba(30, 30, 30, 0.08);
-  border-radius: 1.45rem;
-}
 
 .eyebrow {
   margin: 0 0 1.2rem;
@@ -325,7 +230,6 @@ h1 {
   line-height: 0.9;
 }
 
-.hero-copy,
 .section-heading p:not(.eyebrow),
 .section-card p,
 .simple-page p,
@@ -337,10 +241,6 @@ h1 {
   line-height: 1.75;
 }
 
-.hero-copy {
-  max-width: 30rem;
-  margin: 1.6rem 0 0;
-}
 
 .card-actions {
   display: flex;
@@ -487,8 +387,6 @@ h1 {
   letter-spacing: -0.01em;
 }
 
-.project-kicker,
-.project-status,
 .gallery-tile span,
 .overview-grid span,
 .stat-block span {
@@ -708,19 +606,6 @@ h1 {
   margin-top: 2rem;
 }
 
-.side-notes {
-  position: absolute;
-  right: 0;
-  bottom: 8%;
-  display: grid;
-  gap: 0.55rem;
-  color: rgba(38, 34, 30, 0.48);
-  font-size: 0.66rem;
-  font-weight: 800;
-  letter-spacing: 0.17em;
-  text-align: right;
-  text-transform: uppercase;
-}
 
 .site-footer {
   display: flex;
@@ -823,30 +708,6 @@ h1 {
     align-items: start;
     padding-top: 3rem;
   }
-
-  .index-rail {
-    position: absolute;
-    top: 4rem;
-    left: 0;
-  }
-
-  .orb-wrap {
-    min-height: 25rem;
-  }
-
-  .lens-orb {
-    left: 47%;
-    width: min(52rem, 118vw);
-  }
-
-  .glass-card {
-    margin: -5rem 0 4rem auto;
-  }
-
-  .side-notes {
-    position: static;
-    text-align: left;
-  }
 }
 
 @media (max-width: 700px) {
@@ -856,29 +717,8 @@ h1 {
 
   .site-header {
     width: min(100% - 1rem, 34rem);
-    padding: 0.55rem;
-  }
-
-  .top-nav {
-    font-size: 0.58rem;
-    letter-spacing: 0.12em;
-  }
-
-  .page-shell {
-    padding-inline: 0.8rem;
-  }
-
-  .orb-wrap {
-    min-height: 21rem;
-  }
-
-  .glass-card {
     margin-top: -3rem;
     border-radius: 1.35rem;
-  }
-
-  .glass-card::before {
-    border-radius: 0.92rem;
   }
 
   .site-footer {
@@ -976,29 +816,8 @@ body::after {
   backdrop-filter: blur(8px);
 }
 
-.menu-toggle {
-  display: grid;
-  gap: 6px;
-  width: 30px;
-  padding: 0;
-  border: 0;
-  background: transparent;
-  cursor: pointer;
-}
 
-.menu-toggle span {
-  display: block;
-  width: 27px;
-  height: 1px;
-  border-radius: 999px;
-  background: #a8a2a5;
-}
 
-.menu-toggle:focus-visible {
-  outline: 2px solid rgba(255, 255, 255, 0.82);
-  outline-offset: 8px;
-  border-radius: 999px;
-}
 
 .page-shell {
   min-height: 100vh;
@@ -1341,9 +1160,6 @@ body::after {
   backdrop-filter: blur(12px);
 }
 
-.menu-toggle {
-  display: none;
-}
 
 @media (max-width: 900px) {
   .site-header {
@@ -1476,9 +1292,6 @@ body::after {
 .editorial-page .eyebrow {
   margin: 0;
   color: var(--editorial-muted);
-  font-family: var(--font-primary);
-  font-size: 24px;
-  font-weight: 400;
   line-height: 1.2;
   letter-spacing: -0.01em;
   text-transform: none;
