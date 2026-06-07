@@ -912,31 +912,12 @@ h1 {
 }
 
 body {
-  background:
-    radial-gradient(circle at 47% 42%, rgba(242, 239, 234, 0.48), transparent 24rem),
-    radial-gradient(circle at 14% 78%, rgba(184, 132, 103, 0.34), transparent 26rem),
-    radial-gradient(circle at 82% 22%, rgba(126, 153, 134, 0.28), transparent 24rem),
-    radial-gradient(circle at 84% 64%, rgba(169, 131, 99, 0.22), transparent 31rem),
-    linear-gradient(135deg, var(--warm-stucco-white) 0%, #e5ded5 50%, var(--soft-limestone) 100%);
+  background: #ffffff;
 }
 
-body::before {
-  z-index: -4;
-  background:
-    radial-gradient(circle at 19% 21%, rgba(242, 239, 234, 0.32), transparent 18rem),
-    radial-gradient(circle at 70% 20%, rgba(126, 153, 134, 0.18), transparent 20rem),
-    linear-gradient(120deg, rgba(242, 239, 234, 0.16), transparent 52%, rgba(94, 107, 88, 0.14));
-  background-size: auto;
-  mask-image: none;
-}
-
+body::before,
 body::after {
-  z-index: 9;
-  height: auto;
-  inset: 0;
-  opacity: 0.16;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.34'/%3E%3C/svg%3E");
-  mix-blend-mode: soft-light;
+  display: none;
 }
 
 .ambient,
@@ -1252,6 +1233,44 @@ body::after {
 .hero-actions a:first-child {
   border-color: rgba(184, 132, 103, 0.36);
   background: linear-gradient(135deg, rgba(184, 132, 103, 0.22), rgba(242, 239, 234, 0.18));
+}
+
+/* Plain home screen: remove decorative background color, bubbles, and glass forms. */
+.hero-stage {
+  background: #ffffff;
+}
+
+.sculpture-field,
+.glass-form {
+  display: none;
+}
+
+.hero-content h1 {
+  color: #000000;
+}
+
+.hero-actions a,
+.hero-actions a:first-child {
+  border-color: rgba(0, 0, 0, 0.28);
+  color: #000000;
+  background: #ffffff;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+.hero-actions a:focus-visible,
+.hero-actions a:hover {
+  border-color: rgba(0, 0, 0, 0.7);
+  color: #000000;
+  background: #f4f4f4;
+}
+
+.brand-mark {
+  border-color: rgba(0, 0, 0, 0.28);
+  color: #000000;
+  background: #ffffff;
+  box-shadow: none;
+  backdrop-filter: none;
 }
 
 @media (max-width: 900px) {
