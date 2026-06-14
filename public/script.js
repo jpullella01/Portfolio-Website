@@ -170,12 +170,15 @@ const renderProjectCards = () => {
     card.style.setProperty("--card-canvas", project.accentTheme.canvas);
     card.style.setProperty("--card-glow", project.accentTheme.glowOne);
 
+    const yearLabel = project.year || "2020";
+
     card.innerHTML = `
       <div class="project-card-image" aria-hidden="true"></div>
       <div class="project-card-meta">
-        <h3>${project.title}</h3>
-        <p class="project-year">${project.year}</p>
+        <h3>Project</h3>
+        <p class="project-year">${yearLabel}</p>
       </div>
+      <span class="visually-hidden">${project.title}</span>
     `;
 
     card.addEventListener("mouseenter", () => applyTheme(project.accentTheme));
