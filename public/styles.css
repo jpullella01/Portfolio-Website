@@ -1767,7 +1767,7 @@ body::after {
 @media (max-width: 760px) {
   [data-view="projects"].project-system {
     max-width: min(100% - 28px, 36rem);
-    padding-top: 104px;
+    padding-top: 144px;
   }
 
   [data-view="projects"] .section-heading {
