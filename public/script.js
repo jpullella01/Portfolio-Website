@@ -115,14 +115,17 @@ const renderProjectDetail = (project) => {
   detail.querySelector("[data-detail-category]").textContent = `${project.category} · ${project.year}`;
   detail.querySelector("[data-detail-title]").textContent = project.title;
   detail.querySelector("[data-detail-summary]").textContent = project.summary;
-  detail.querySelector("[data-detail-path]").textContent = `${project.assetsPath}hero/`;
+  detail.querySelector("[data-detail-path]").textContent = project.heroImage || `${project.assetsPath}hero/`;
   detail.querySelector("[data-detail-role]").textContent = project.role;
   detail.querySelector("[data-detail-timeline]").textContent = project.timeline;
   detail.querySelector("[data-detail-year]").textContent = project.year;
   detail.querySelector("[data-detail-deliverables]").textContent = project.deliverables.join(" · ");
   detail.querySelector("[data-detail-problem]").textContent = project.sections.problem;
   detail.querySelector("[data-detail-outcome]").textContent = project.sections.outcome;
-  detail.querySelector("[data-detail-hero]").style.setProperty("--placeholder-label", `"${project.title}"`);
+  const hero = detail.querySelector("[data-detail-hero]");
+  hero.style.setProperty("--placeholder-label", `"${project.title}"`);
+  hero.style.setProperty("--project-hero-image", project.heroImage ? `url("${project.heroImage}")` : "none");
+  hero.toggleAttribute("data-has-image", Boolean(project.heroImage));
 
   replaceChips("[data-detail-research]", project.sections.research);
   replaceChips("[data-detail-process]", project.sections.process);
@@ -169,6 +172,10 @@ const renderProjectCards = () => {
     card.style.setProperty("--card-accent", project.accentTheme.accent);
     card.style.setProperty("--card-canvas", project.accentTheme.canvas);
     card.style.setProperty("--card-glow", project.accentTheme.glowOne);
+    if (project.heroImage) {
+      card.style.setProperty("--card-image", `url("${project.heroImage}")`);
+      card.dataset.hasImage = "true";
+    }
 
     const yearLabel = project.year || "2020";
 

@@ -9,7 +9,7 @@ window.PORTFOLIO_PROJECTS = [
     deliverables: ["Concept development", "Prototype plan", "CMF palette", "Final presentation boards"],
     summary:
       "A soft, rounded product study that balances playful interaction with clear construction logic and a warm material story.",
-    heroImage: "",
+    heroImage: "/assets/projects/tongo/hero/tongo.svg",
     assetsPath: "/assets/projects/tongo/",
     themeDirection: "Soft, rounded, playful, warm",
     accentTheme: {
