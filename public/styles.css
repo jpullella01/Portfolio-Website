@@ -549,6 +549,20 @@ h1 {
     var(--accent-soft);
 }
 
+.image-placeholder[data-has-image] {
+  border-style: solid;
+  background-image: var(--project-hero-image);
+  background-position: center;
+  background-size: cover;
+}
+
+.image-placeholder[data-has-image]::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: linear-gradient(180deg, transparent 48%, rgba(0, 0, 0, 0.42));
+}
+
 .image-placeholder::before {
   position: absolute;
   top: 2rem;
@@ -1692,6 +1706,20 @@ body::after {
 
 .project-card-image::after {
   background: radial-gradient(circle at 50% 50%, transparent 34%, rgba(238, 239, 232, 0.24) 100%);
+}
+
+.project-card[data-has-image="true"] .project-card-image {
+  background-image: var(--card-image);
+  background-position: center;
+  background-size: cover;
+}
+
+.project-card[data-has-image="true"] .project-card-image::before {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.18), transparent 42%);
+}
+
+.project-card[data-has-image="true"] .project-card-image::after {
+  background: linear-gradient(180deg, transparent 58%, rgba(0, 0, 0, 0.18));
 }
 
 .project-card:nth-child(2) .project-card-image,

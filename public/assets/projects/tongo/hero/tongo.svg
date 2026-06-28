@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1344 1123" role="img" aria-labelledby="title desc">
+  <title id="title">Tongo soft sculpture</title>
+  <desc id="desc">Colorful red, white, yellow, and green soft looped forms on a pale blue background.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#d2e4ed"/><stop offset="1" stop-color="#c6dce5"/></linearGradient>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="160%"><feGaussianBlur stdDeviation="14"/></filter>
+  </defs>
+  <rect width="1344" height="1123" fill="url(#bg)"/>
+  <g opacity=".28" fill="#364545" filter="url(#softShadow)"><ellipse cx="290" cy="1071" rx="125" ry="16"/><ellipse cx="908" cy="1064" rx="82" ry="14"/><ellipse cx="1175" cy="1058" rx="105" ry="17"/></g>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M-36 922 C120 892 192 808 319 725 C438 648 558 700 718 760 C820 800 860 902 932 1016" stroke="#bc0000" stroke-width="84"/>
+    <path d="M1010 -24 C1002 130 948 244 884 398 C829 532 822 666 882 889" stroke="#c30000" stroke-width="86"/>
+    <path d="M246 692 C304 600 322 592 326 1020" stroke="#00a066" stroke-width="84"/>
+    <path d="M292 604 C368 655 472 720 647 748 C844 780 1088 756 1376 676" stroke="#f4ce00" stroke-width="72"/>
+    <path d="M1064 166 C1190 212 1232 350 1228 517 C1224 684 1146 826 1237 1096" stroke="#f2eee9" stroke-width="90"/>
+    <path d="M-30 834 C112 822 154 860 206 1014 C250 1138 486 1121 720 1052" stroke="#ead9df" stroke-width="80"/>
+    <path d="M258 608 C344 528 410 554 516 688" stroke="#f6ce00" stroke-width="56"/>
+  </g>
+  <g fill="#c6dce5">
+    <ellipse cx="1168" cy="300" rx="40" ry="55" transform="rotate(32 1168 300)"/>
+    <ellipse cx="1117" cy="352" rx="32" ry="45" transform="rotate(23 1117 352)"/>
+    <ellipse cx="1196" cy="487" rx="24" ry="38" transform="rotate(19 1196 487)"/>
+    <ellipse cx="873" cy="699" rx="30" ry="47" transform="rotate(3 873 699)"/>
+    <ellipse cx="669" cy="785" rx="23" ry="31" transform="rotate(-20 669 785)"/>
+    <ellipse cx="355" cy="624" rx="25" ry="36" transform="rotate(-56 355 624)"/>
+    <ellipse cx="407" cy="710" rx="21" ry="29" transform="rotate(-63 407 710)"/>
+    <ellipse cx="236" cy="1001" rx="43" ry="55" transform="rotate(-11 236 1001)"/>
+    <ellipse cx="16" cy="972" rx="41" ry="24"/>
+  </g>
+  <g fill="none" stroke-linecap="round" opacity=".7">
+    <path d="M1050 170 C1125 210 1180 260 1202 358" stroke="#fff" stroke-width="24"/>
+    <path d="M56 826 C126 840 178 910 212 984" stroke="#fff4f7" stroke-width="25"/>
+  </g>
+  <g fill="#e5ad00"><path d="M968 258 C980 295 1010 316 1040 321 C1030 282 1006 252 976 239Z"/><ellipse cx="1213" cy="1055" rx="33" ry="42" transform="rotate(-10 1213 1055)"/></g>
+</svg>
