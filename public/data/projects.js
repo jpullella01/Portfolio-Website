@@ -37,7 +37,7 @@ window.PORTFOLIO_PROJECTS = [
   },
   {
     slug: "dega",
-    title: "Dega",
+    title: "dega",
     category: "Furniture / material exploration",
     year: "2024",
     timeline: "10 weeks",
@@ -72,7 +72,7 @@ window.PORTFOLIO_PROJECTS = [
   },
   {
     slug: "sprout",
-    title: "Sprout",
+    title: "sprout",
     category: "Sport product / technical system",
     year: "2024",
     timeline: "14 weeks",
@@ -107,7 +107,7 @@ window.PORTFOLIO_PROJECTS = [
   },
   {
     slug: "unlocked",
-    title: "Unlocked",
+    title: "unlocked",
     category: "Utility product / rugged experience",
     year: "2024",
     timeline: "8 weeks",
@@ -177,7 +177,7 @@ window.PORTFOLIO_PROJECTS = [
   },
   {
     slug: "trade-stacks",
-    title: "Trade Stacks",
+    title: "trade stacks",
     category: "Industrial system / data-driven design",
     year: "2024",
     timeline: "9 weeks",
@@ -212,7 +212,7 @@ window.PORTFOLIO_PROJECTS = [
   },
   {
     slug: "paintings",
-    title: "Paintings",
+    title: "paintings",
     category: "",
     year: "",
     timeline: "",

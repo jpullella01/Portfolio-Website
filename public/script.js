@@ -182,7 +182,7 @@ const renderProjectCards = () => {
     card.innerHTML = `
       <div class="project-card-image" aria-hidden="true"></div>
       <div class="project-card-meta">
-        <h3>Project</h3>
+        <h3>${project.title}</h3>
         <p class="project-year">${yearLabel}</p>
       </div>
       <span class="visually-hidden">${project.title}</span>
