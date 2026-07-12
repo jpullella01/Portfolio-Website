@@ -704,10 +704,35 @@ h1 {
 
 [data-view="about"],
 [data-view="contact"] {
+  position: relative;
+  overflow: hidden;
   border: 0;
   background: transparent;
   box-shadow: none;
   backdrop-filter: none;
+  isolation: isolate;
+}
+
+[data-view="about"]::before,
+[data-view="contact"]::before {
+  position: absolute;
+  inset: clamp(1rem, 3vw, 2rem);
+  z-index: -1;
+  pointer-events: none;
+  content: "";
+  border-radius: clamp(2rem, 7vw, 6rem);
+  background:
+    radial-gradient(circle at 24% 26%, rgba(184, 132, 103, 0.2), transparent 30rem),
+    radial-gradient(circle at 78% 68%, rgba(126, 153, 134, 0.18), transparent 26rem),
+    radial-gradient(circle at 50% 48%, rgba(242, 239, 234, 0.72), transparent 32rem);
+  filter: blur(18px);
+}
+
+[data-view="contact"]::before {
+  background:
+    radial-gradient(circle at 72% 24%, rgba(184, 132, 103, 0.18), transparent 28rem),
+    radial-gradient(circle at 24% 76%, rgba(126, 153, 134, 0.2), transparent 27rem),
+    radial-gradient(circle at 48% 48%, rgba(242, 239, 234, 0.76), transparent 32rem);
 }
 
 .simple-page p {
