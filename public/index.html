@@ -1,170 +1,142 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Julianne Designs — a clean industrial design portfolio with reusable project case-study pages." />
-    <meta name="author" content="Julianne Designs" />
-    <meta name="theme-color" content="#F2EFEA" />
-    <meta property="og:title" content="Julianne Designs" />
-    <meta property="og:description" content="Industrial design portfolio organized around reusable project templates and warm project themes." />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <title>Julianne Designs</title>
-    <link rel="preload" href="/assets/lens-orb.svg" as="image" />
-    <link rel="stylesheet" href="/styles.css" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="The industrial design portfolio of Julianne Pullella.">
+    <meta name="theme-color" content="#ffffff">
+    <title>Julianne Pullella — Industrial Designer</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/script.js" defer></script>
   </head>
   <body>
-    <a class="skip-link" href="#main-content">Skip to main content</a>
-    <div class="ambient ambient-one" aria-hidden="true"></div>
-    <div class="ambient ambient-two" aria-hidden="true"></div>
+    <a class="skip-link" href="#main">Skip to content</a>
 
-    <header class="site-header" aria-label="Primary navigation">
-      <a class="brand-mark" href="/" data-route aria-label="Julianne Designs home">JP</a>
-      <nav class="top-nav" aria-label="Site pages">
-        <a href="/" data-route>Home</a>
-        <a href="/about" data-route>About</a>
-        <a href="/projects" data-route>Projects</a>
-        <a href="/contact" data-route>Contact</a>
+    <header class="site-header">
+      <a class="brand" href="#home" aria-label="Julianne Pullella, home">
+        <img src="/assets/work/jp-logo.png" alt="">
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
       </nav>
-      <a class="contact-link" href="mailto:hello@juliannedesigns.example" aria-label="Email Julianne Designs">Email</a>
     </header>
 
-    <main id="main-content" class="page-shell">
-      <section class="hero-stage page-view" data-view="home" aria-labelledby="hero-title">
-        <div class="hero-content">
-          <h1 id="hero-title"><span>PORTFOLIO</span></h1>
-          <div class="hero-actions" aria-label="Featured actions">
-            <a href="/projects" data-route>See more work</a>
-            <a href="/about" data-route>About me</a>
+    <main id="main">
+      <section class="hero" id="home" aria-labelledby="hero-title">
+        <div class="hero-copy reveal">
+          <h1 id="hero-title">Better objects,<br>made with care.</h1>
+          <p class="lede">Thoughtful industrial design for everyday life.</p>
+          <div class="actions">
+            <a class="button button-dark" href="#work">View my work</a>
+            <a class="button button-light" href="#about">About me</a>
           </div>
         </div>
       </section>
 
-      <section class="project-system page-view" data-view="projects" aria-labelledby="portfolio-title">
-        <div class="section-heading">
-          <h2 id="portfolio-title">2020-2026</h2>
+      <section class="statement" id="about" aria-labelledby="statement-title">
+        <div class="statement-inner reveal">
+          <p class="eyebrow">A little about me</p>
+          <h2 id="statement-title">Clear ideas. Human objects.</h2>
+          <p>I’m an industrial designer drawn to the small decisions that make an object intuitive. I study how people move, carry, gather, and make, then translate those observations into forms that feel clear and considered. Material, color, and a little playfulness help each idea become something people want to keep close. For me, good design is the result of careful research, honest constraints, repeated prototypes, and the patience to remove anything that does not support the experience.</p>
+          <div class="actions">
+            <a class="button button-white" href="#work">Explore projects</a>
+            <a class="button button-outline" href="mailto:jpullella2001@gmail.com">Say hello</a>
+          </div>
         </div>
-        <div class="project-grid" data-project-grid></div>
       </section>
 
-      <article class="project-page page-view" data-view="project-detail" data-project-detail aria-live="polite">
-        <section class="project-hero">
+      <section class="work section-shell" id="work" aria-labelledby="work-title">
+        <div class="section-intro reveal">
+          <h2 id="work-title">Portfolio</h2>
+        </div>
+
+        <div class="project-grid">
+          <article class="project-card reveal">
+            <button class="project-trigger" type="button" data-project="tongo" aria-label="View Tongo project">
+              <span class="project-image"><img src="/assets/work/tongo.png" alt="Close-up of Tongo's soft red sculptural form"></span>
+              <span class="project-meta"><strong>Tongo</strong><span>2025</span></span>
+            </button>
+          </article>
+          <article class="project-card reveal">
+            <button class="project-trigger" type="button" data-project="dega" aria-label="View Dega project">
+              <span class="project-image"><img src="/assets/work/dega.png" alt="Dega flat-pack wooden furniture detail"></span>
+              <span class="project-meta"><strong>Dega</strong><span>2024</span></span>
+            </button>
+          </article>
+          <article class="project-card reveal">
+            <button class="project-trigger" type="button" data-project="sprout" aria-label="View Sprout project">
+              <span class="project-image"><img src="/assets/work/sprout.png" alt="Sprout snowboard color and material concepts"></span>
+              <span class="project-meta"><strong>Sprout</strong><span>2024</span></span>
+            </button>
+          </article>
+          <article class="project-card reveal">
+            <button class="project-trigger" type="button" data-project="unlocked" aria-label="View Unlocked project">
+              <span class="project-image"><img src="/assets/work/unlocked.png" alt="Black and orange modular outdoor pack"></span>
+              <span class="project-meta"><strong>Unlocked</strong><span>2024</span></span>
+            </button>
+          </article>
+          <article class="project-card reveal">
+            <button class="project-trigger" type="button" data-project="sportrock" aria-label="View Sportrock project">
+              <span class="project-image"><img src="/assets/work/sportrock.png" alt="A collection of Sportrock apparel graphics"></span>
+              <span class="project-meta"><strong>Sportrock</strong><span>2024</span></span>
+            </button>
+          </article>
+          <article class="project-card reveal">
+            <button class="project-trigger" type="button" data-project="trade-stacks" aria-label="View Trade Stacks project">
+              <span class="project-image"><img src="/assets/work/trade-stacks.png" alt="Trade Stacks user research and system data"></span>
+              <span class="project-meta"><strong>Trade Stacks</strong><span>2024</span></span>
+            </button>
+          </article>
+        </div>
+
+        <div class="work-footer reveal">
           <div>
-            <p class="eyebrow" data-detail-category>Project category</p>
-            <h1 data-detail-title>Project title</h1>
-            <p data-detail-summary>Project summary</p>
-            <div class="card-actions">
-              <a href="/projects" data-route>Back to projects</a>
-              <a href="/contact" data-route>Discuss work</a>
-            </div>
+            <h3>My design philosophy</h3>
+            <p>Strong products begin with empathy and end with restraint. I look for the honest idea at the center of a problem, then use form, color, and material to make that idea easy to understand.</p>
           </div>
-          <div class="image-placeholder" data-detail-hero>
-            <span>Hero image</span>
-            <strong data-detail-path>/assets/projects/{slug}/hero/</strong>
+          <div id="contact">
+            <h3>Reach out</h3>
+            <a href="mailto:jpullella2001@gmail.com">Email</a>
+            <a href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
           </div>
-        </section>
-
-        <section class="project-overview section-card">
-          <p class="eyebrow">Overview</p>
-          <div class="overview-grid">
-            <div><span>Role</span><strong data-detail-role></strong></div>
-            <div><span>Timeline</span><strong data-detail-timeline></strong></div>
-            <div><span>Year</span><strong data-detail-year></strong></div>
-            <div><span>Deliverables</span><strong data-detail-deliverables></strong></div>
-          </div>
-        </section>
-
-        <section class="case-study-grid" aria-label="Project case study sections">
-          <div class="section-card">
-            <p class="eyebrow">Problem / opportunity</p>
-            <h2>The design challenge</h2>
-            <p data-detail-problem></p>
-          </div>
-          <div class="section-card">
-            <p class="eyebrow">Research / insights</p>
-            <h2>Inputs and observations</h2>
-            <div class="principle-list" data-detail-research></div>
-          </div>
-          <div class="section-card">
-            <p class="eyebrow">Process</p>
-            <h2>Sketch, iterate, test, develop</h2>
-            <div class="principle-list" data-detail-process></div>
-          </div>
-          <div class="section-card">
-            <p class="eyebrow">CMF / materials / visual system</p>
-            <h2>Project language</h2>
-            <div class="principle-list" data-detail-cmf></div>
-          </div>
-          <div class="section-card section-card-wide">
-            <p class="eyebrow">Outcome / impact</p>
-            <h2>Final result</h2>
-            <p data-detail-outcome></p>
-            <div class="stat-row" data-detail-stats></div>
-          </div>
-        </section>
-
-        <section class="project-gallery section-card">
-          <div>
-            <p class="eyebrow">Gallery</p>
-            <h2>Grouped image folders</h2>
-            <p>Each tile maps to a predictable folder inside the project asset directory for hero, research, process, CMF, final, and gallery imagery.</p>
-          </div>
-          <div class="gallery-grid" data-detail-gallery></div>
-        </section>
-      </article>
-
-      <section class="simple-page editorial-page page-view" data-view="about" aria-labelledby="about-title">
-        <div class="editorial-block">
-          <p class="eyebrow">About / profile structure</p>
-          <h1 id="about-title">get to know me</h1>
-          <p>
-            This page is ready for Julianne's biography, education history, professional experience, awards, and a concise skills taxonomy. It keeps the same warm global system as the rest of the portfolio.
-          </p>
-        </div>
-        <div class="about-strip" data-about-groups></div>
-      </section>
-
-
-      <section class="simple-page paintings-page page-view" data-view="paintings" aria-labelledby="paintings-title">
-        <div class="paintings-intro">
-          <h1 id="paintings-title">Paintings</h1>
-          <p>
-            A curated collection of flower paintings focused on soft color, texture, and organic composition.
-          </p>
-        </div>
-        <div class="paintings-grid" aria-label="Flower painting gallery">
-          <article class="painting-card"><img src="/assets/paintings/gallery/flower-1.jpeg" alt="Blue flowers in a painterly arrangement" loading="lazy" /></article>
-          <article class="painting-card"><img src="/assets/paintings/gallery/flower 2.jpeg" alt="Warm-toned bouquet with layered petals" loading="lazy" /></article>
-          <article class="painting-card"><img src="/assets/paintings/gallery/flower 3.jpeg" alt="Soft floral composition with pink highlights" loading="lazy" /></article>
-          <article class="painting-card"><img src="/assets/paintings/gallery/flower 4.jpeg" alt="Yellow and green flowers in a bright arrangement" loading="lazy" /></article>
-          <article class="painting-card"><img src="/assets/paintings/gallery/flower 5.jpeg" alt="Purple blossoms with delicate brushlike texture" loading="lazy" /></article>
-          <article class="painting-card"><img src="/assets/paintings/gallery/flower 6.jpeg" alt="Mixed flowers in vivid pink and orange tones" loading="lazy" /></article>
-          <article class="painting-card"><img src="/assets/paintings/gallery/flower 7.jpeg" alt="Airy pastel bouquet with soft background" loading="lazy" /></article>
-          <article class="painting-card"><img src="/assets/paintings/gallery/flower 8.jpeg" alt="Dense floral cluster with cream and blush colors" loading="lazy" /></article>
         </div>
       </section>
-      <section class="simple-page editorial-page page-view" data-view="contact" aria-labelledby="contact-title">
-        <div class="editorial-block">
-          <p class="eyebrow">Contact / call to action</p>
-          <h1 id="contact-title">CONTACT</h1>
-          <p>
-            Use this page for direct contact information, collaboration prompts, and a simple call-to-action that points visitors toward inquiries or portfolio follow-up.
-          </p>
+
+      <section class="interests section-shell" id="interests" aria-labelledby="interests-title">
+        <div class="interests-copy reveal">
+          <h2 id="interests-title">Interests and hobbies</h2>
+          <p>Beyond product design, I’m drawn to painting, visual systems, outdoor experiences, and the way color can give everyday objects a distinct point of view. These experiments keep my eye curious and often find their way back into product work.</p>
         </div>
-        <div class="card-actions">
-          <a href="mailto:hello@juliannedesigns.example">Email Julianne</a>
-          <a href="/projects" data-route>Review projects</a>
+        <div class="interest-gallery">
+          <img class="reveal" src="/assets/work/painting-1.jpg" alt="A colorful floral painting by Julianne">
+          <img class="reveal" src="/assets/work/painting-2.jpg" alt="A painterly flower composition by Julianne">
+          <img class="reveal" src="/assets/work/painting-3.jpg" alt="A soft floral artwork by Julianne">
+        </div>
+        <div class="interest-list reveal" aria-label="Creative interests">
+          <div><strong>Painting &amp; color</strong><span>Ongoing</span></div>
+          <div><strong>Outdoor products</strong><span>Research</span></div>
+          <div><strong>Graphics &amp; apparel</strong><span>Exploration</span></div>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
-      <span>Julianne Designs</span>
-      <span>Reusable project template · Project accent themes · Organized content files</span>
+      <span>Julianne Pullella</span>
+      <span>Industrial designer · 2026</span>
     </footer>
 
-    <script src="/data/projects.js" defer></script>
-    <script src="/script.js" defer></script>
+    <dialog class="project-dialog" aria-labelledby="dialog-title">
+      <button class="dialog-close" type="button" aria-label="Close project">Close</button>
+      <div class="dialog-layout">
+        <div class="dialog-copy">
+          <p class="eyebrow" id="dialog-kicker"></p>
+          <h2 id="dialog-title"></h2>
+          <p id="dialog-description"></p>
+        </div>
+        <img id="dialog-image" alt="">
+      </div>
+    </dialog>
   </body>
 </html>
