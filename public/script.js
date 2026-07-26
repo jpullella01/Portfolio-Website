@@ -9,7 +9,7 @@ const projects = {
     title: "Dega",
     kicker: "Furniture design · 2024",
     description: "A flat-pack furniture study that explores manufacturing logic, warm natural material, and expressive joinery.",
-    image: "/assets/work/dega.png",
+    image: "/assets/work/dega.jpg",
   },
   sprout: {
     title: "Sprout",
@@ -21,7 +21,7 @@ const projects = {
     title: "Unlocked",
     kicker: "Outdoor product · 2024",
     description: "A modular outdoor pack developed around organization, access, durability, and the needs of active users.",
-    image: "/assets/work/unlocked.png",
+    image: "/assets/work/unlocked.jpg",
   },
   sportrock: {
     title: "Sportrock",
