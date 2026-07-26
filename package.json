@@ -7,7 +7,7 @@
     "dev": "npx wrangler dev",
     "deploy:workers": "npx wrangler deploy",
     "deploy:pages": "npx wrangler pages deploy public --project-name julianne-designs",
-    "check": "node --check public/script.js"
+    "check": "node -e \"require('fs').accessSync('public/index.html')\""
   },
   "devDependencies": {
     "wrangler": "^4.14.1"

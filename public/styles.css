@@ -166,6 +166,7 @@ h1 {
 .project-trigger { width: 100%; padding: 0; border: 0; text-align: left; background: transparent; cursor: pointer; }
 .project-image { display: block; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 16px; background: #eee; }
 .project-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 450ms cubic-bezier(.2,.7,.2,1); }
+[data-project="tongo"] .project-image img { object-position: center bottom; }
 .project-trigger:hover img, .project-trigger:focus-visible img { transform: scale(1.025); }
 .project-trigger:focus-visible { outline: 2px solid #000; outline-offset: 7px; border-radius: 16px; }
 .project-meta { display: flex; justify-content: space-between; gap: 20px; margin-top: 18px; font-size: 22px; }
