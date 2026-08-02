@@ -1,4 +1,10 @@
 const projects = {
+  "bloom-lamp": {
+    title: "Bloom Lamp",
+    kicker: "Lighting design · 2026",
+    description: "A sculptural table lamp that layers translucent petal-like forms around a warm central glow, bringing soft ambient light and an expressive floral silhouette into everyday spaces.",
+    image: "/assets/work/bloom-lamp.png",
+  },
   tongo: {
     title: "Tongo",
     kicker: "Product design · 2025",
